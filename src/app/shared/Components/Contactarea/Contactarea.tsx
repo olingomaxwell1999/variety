@@ -8,14 +8,14 @@ import emailjs from "@emailjs/browser";
 const Contactarea = () => {
   const [result, setResult] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
         "service_prk4agt",
         "template_92qp9di",
-        e.target,
+        e.currentTarget,
         "wyL9szuhcFXTO7PpM4yk0"
       )
       .then(
@@ -27,9 +27,7 @@ const Contactarea = () => {
         }
       );
 
-    e.target.reset();
-
-    setResult(true);
+    e.currentTarget.reset();
   };
 
   return (
