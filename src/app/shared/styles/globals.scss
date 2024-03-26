@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-extra-large: 1200px;
+
+:root{
+    --main-blue: #1b6cb4;
+    --main-brown: #936a38;
+    --main-padding: 20px 80px;
+}
+
+.button{
+    background-color: var(--main-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.button-brown {
+    background-color: var(--main-brown);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    font-size: 16px;
+}
+
+// Top Navigation Styles
+.top-nav{
+    padding: 15px 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--main-blue);
+
+    .icon-area,
+    .text-area{
+        ul{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            color: #fff;
+        }
+    }
+}
+
+//Main Navigation styles
+.main-nav{
+    padding: 0 80px;
+}
+
+//Deals Area section
+
+.deals-area{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+    padding: var(--main-padding);
+    // position: relative;
+}
+
+//Deals Card Styles
+.deals-card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    // align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative;
+
+    .image-area{
+        width: 100%;
+        height: 100%;
+        // position: relative;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .content-area{
+        display: flex;
+        // gap: 20px;
+        // align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 280px;
+        color: #000;
+        padding: 10px;
+
+        p{
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        h2{
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+    }
+}
+
+// Footer Styles
+.main-footer {
+
+    background-color: var(--main-brown);
+    padding: var(--main-padding);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    
+    .top-footer{
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .middle-footer{
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+}
+
+.bottom-footer {
+    display: flex;
+    flex-wrap:  wrap;
+    justify-content: space-between;
+    // justify-content: center;
+    align-items: center;
+    background-color: var(--main-blue);
+    color: #fff;
+
+    .footer-bottom-icon{
+        display: flex;
+        gap: 20px;
+        padding: 20px 80px;
+
+        ul{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+    }
+}
+
+
+
+
+// Styles for screens smaller than or equal to 576px
+@media screen and (max-width: $breakpoint-small) {
+    .main-footer{
+        .middle-footer{
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+// Styles for screens larger than 576px and up to 767px
+@media screen and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+    .deals-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .main-footer {
+        .middle-footer {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+// Styles for screens larger than 767px and up to 992px
+@media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+    .deals-area {
+        grid-template-columns: 1fr 1fr;
+    }
+    .main-footer {
+        .middle-footer {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
