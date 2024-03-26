@@ -10,7 +10,8 @@ $breakpoint-extra-large: 1200px;
 :root{
     --main-blue: #1b6cb4;
     --main-brown: #936a38;
-    --main-padding: 20px 80px;
+    --main-padding: 40px 80px;
+    --minor-padding: 20px 40px;
 }
 
 .button{
@@ -89,7 +90,6 @@ $breakpoint-extra-large: 1200px;
 
     .content-area{
         display: flex;
-        // gap: 20px;
         // align-items: center;
         justify-content: space-between;
         width: 100%;
@@ -113,6 +113,113 @@ $breakpoint-extra-large: 1200px;
     }
 }
 
+//Contact page Styles
+.contact-area{
+    padding: var(--main-padding);
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    gap: 20px;
+
+    h2{
+        font-size: 25px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    .vertical-line-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .vertical-line {
+            width: 1px;
+            height: 100%;
+            background: #000;
+            opacity: .2;
+        }
+    }
+
+        .contact-box-contact {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+    
+    
+            .icon-box-contact {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+    
+                .icon-area {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    width: 100%;
+                    
+                    span{
+                        text-transform: capitalize;
+                        font-weight: 500;
+                    }
+                }
+    
+                .text-area-contact {
+                    display: flex;
+                    flex-direction: column;
+                    // gap: 10px;
+                    // align-items: center;
+
+                    h3{
+                        text-transform: uppercase;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        .contact-form{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .input-carrier{
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+
+                input {
+                    padding: 10px 20px;
+                    width: 100%;
+                    border: 1px solid black;
+                    outline: none;
+                    background: transparent;
+                    color: #000;
+                    border-radius: 10px;
+                }
+
+                .message {
+                    padding: 10px 20px;
+                    width: 100%;
+                    border: 1px solid black;
+                    outline: none;
+                    height: fit-content;
+                    margin-bottom: 30px;
+                    background: transparent;
+                    color: #000;
+                    border-radius: 10px;
+                }
+            }
+        }
+}
+
 // Footer Styles
 .main-footer {
 
@@ -130,6 +237,7 @@ $breakpoint-extra-large: 1200px;
         flex-wrap: wrap;
         width: 100%;
         justify-content: space-between;
+        margin-bottom: 40px;
     }
 
     .middle-footer{
@@ -138,6 +246,7 @@ $breakpoint-extra-large: 1200px;
         gap: 20px;
         justify-content: center;
         align-items: center;
+        margin-top: 40px;
     }
 
     
@@ -175,10 +284,25 @@ $breakpoint-extra-large: 1200px;
             grid-template-columns: 1fr;
         }
     }
+
+    .contact-area{
+        grid-template-columns: 1fr !important;
+
+        .vertical-line-container{
+            display: none;
+        }
+    }
 }
 
 // Styles for screens larger than 576px and up to 767px
 @media screen and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+    .contact-area {
+        grid-template-columns: 1fr !important;
+
+        .vertical-line-container {
+            display: none;
+        }
+    }
     .deals-area {
         display: flex;
         flex-direction: column;

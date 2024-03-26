@@ -14,7 +14,7 @@ const Navbar = () => {
             </Link>
             <ul className="hidden md:flex gap-x-6 text-black">
               <li>
-                <Link href="/home">
+                <Link href="/">
                   <p>Home</p>
                 </Link>
               </li>
@@ -46,6 +46,11 @@ const Navbar = () => {
               <li>
                 <Link href="/mirors">
                   <p>Mirrors</p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact">
+                  <p>Contact Us</p>
                 </Link>
               </li>
             </ul>
