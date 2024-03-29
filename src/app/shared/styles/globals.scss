@@ -14,6 +14,21 @@ $breakpoint-extra-large: 1200px;
     --minor-padding: 20px 40px;
 }
 
+@font-face {
+    font-family: 'FuturaLT';
+    src: url('/fonts/FuturaLT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'FuturaLT', sans-serif !important;
+}
+
+p{
+    font-size: 16px;
+}
+
 .button{
     background-color: var(--main-blue);
     color: white;
@@ -220,6 +235,91 @@ $breakpoint-extra-large: 1200px;
         }
 }
 
+//Shop Pages Styles
+.tilepage{
+    padding: var(--minor-padding);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+
+    .sidebar{
+
+    }
+
+    .productsarea{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+
+        .productsareafiltered{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            width: 100%;
+        }
+    }
+}
+
+//product card styles
+.product-card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 300px;
+    background: #f9f9f9;
+    border-radius: 5px;
+
+    .image-area{
+        width: 100%;
+        height: 80%;
+        position: relative;
+        overflow: hidden;
+         
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    }
+
+    .textareacontainer{
+        width: 100%;
+
+        .text-area{
+
+            h3{
+                font-size: 9px;
+                font-weight: 300;
+            }
+
+            p{
+               font-size: 18px;
+               font-weight: 600; 
+            }
+
+            h4{
+                font-size: 14px;
+                font-weight: 600;
+
+                span{
+                    text-decoration: line-through;
+                    font-weight: 300;
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .icon-area{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
 // Footer Styles
 .main-footer {
 
@@ -327,3 +427,4 @@ $breakpoint-extra-large: 1200px;
         }
     }
 }
+
