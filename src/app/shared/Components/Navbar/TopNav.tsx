@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { FaTwitter } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const TopNav = () => {
   return (
@@ -20,7 +21,7 @@ const TopNav = () => {
               href="https://www.facebook.com/varietyflooringlimited/"
               target="_@blank"
             >
-              <FaTwitter />
+              <FaFacebook />
             </Link>
           </li>
           <li>
@@ -28,7 +29,7 @@ const TopNav = () => {
               href="https://www.instagram.com/varietyflooringworksltd/"
               target="_@blank"
             >
-              <FaTwitter />
+              <AiFillInstagram />
             </Link>
           </li>
           <li>
@@ -36,7 +37,7 @@ const TopNav = () => {
               href="https://ke.linkedin.com/company/variety-flooring-works-limited"
               target="_@blank"
             >
-              <FaTwitter />
+              <FaLinkedin />
             </Link>
           </li>
           <li>

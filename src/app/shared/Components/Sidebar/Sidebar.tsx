@@ -1,58 +1,9 @@
-"use client";
-// import React from "react";
-
-// const Sidebar = () => {
-//   const categories = [
-//     "Tiles",
-//     "Granite",
-//     "Marble",
-//     "Bathroom",
-//     "Taps",
-//     "Showers",
-//     "Sanitary",
-//     "BathCo",
-//     "sinks",
-//     "Sanitary",
-//     "",
-//   ];
-
-//   const filterOptions = [
-//     {
-//       id: "categories",
-//       title: "Categories",
-//       options: categories,
-//       type: "checkbox",
-//     },
-//   ];
-
-//   function checkValidityQuery(queries: string[]) {
-//     return queries.filter((query) => query !== "").length > 0;
-//   }
-
-//   function convertValidStringQueries(queries: Record<string, string[]>) {
-//     let q = "";
-
-//     for (let [key, value] of Object.entries(queries)) {
-//       q = q + `${q === "" ? "" : "&"}${key}=${value}`;
-//     }
-//   }
-
-//   return <div>Sidebar</div>;
-// };
-
-// export default Sidebar;
-
 import { Dispatch, SetStateAction, useState } from "react";
-
-interface Item {
-  id: number;
-  name: string;
-  category: string;
-}
+import { Product } from "../../types/types";
 
 interface SidebarProps {
   categories: string[];
-  setFilteredItems: Dispatch<SetStateAction<Item[]>>;
+  setFilteredItems: Dispatch<SetStateAction<Product[]>>;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ categories, setFilteredItems }) => {
@@ -72,6 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ categories, setFilteredItems }) => {
   return (
     <div className="bg-gray-100 p-4 sm:w-64 sm:block">
       <h3 className="text-lg font-semibold mb-2">Categories</h3>
+
       <ul className="space-y-2">
         <li>
           <button

@@ -66,6 +66,31 @@ const Contactarea = () => {
               </h3>
             </div>
           </div>
+          <div className="icon-box-contact">
+            <div className="icon-area mb-2">
+              <FaMapLocationDot />
+              <span>Address</span>
+            </div>
+            <div className="text-area-contact">
+              <h3>Mombasa Office</h3>
+              <p>Leisure Stage, Bombolulu,</p>
+              <p>Heading Towards Malindi</p>
+              <p>Mombasa, Kenya</p>
+            </div>
+          </div>
+
+          <div className="icon-box-contact">
+            <div className="icon-area mb-2">
+              <BiSolidPhoneCall />
+              <span>Call Us</span>
+            </div>
+            <div className="text-area-contact">
+              <h3>
+                Call/WhatsApp:
+                <br /> 0724470195
+              </h3>
+            </div>
+          </div>
 
           <div className="icon-box-contact">
             <div className="icon-area mb-2">
@@ -75,6 +100,8 @@ const Contactarea = () => {
             <div className="text-area-contact">
               <p>Mon - Friday</p>
               <p>8am - 5pm</p>
+              <p>Satarday</p>
+              <p>8am - 2pm</p>
             </div>
           </div>
 

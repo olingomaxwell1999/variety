@@ -285,6 +285,10 @@ p{
         }
     }
 
+    .banner{
+        height: 30px !important;
+    }
+
     .textareacontainer{
         width: 100%;
 
@@ -332,11 +336,12 @@ p{
     
     
     .top-footer{
-        display: flex;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
         gap: 20px;
-        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        justify-content: space-between;
         margin-bottom: 40px;
     }
 
@@ -347,6 +352,22 @@ p{
         justify-content: center;
         align-items: center;
         margin-top: 40px;
+
+        .text{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            h3{
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+        }
+
+        .upmove{
+            margin-top: -20px;
+        }
     }
 
     

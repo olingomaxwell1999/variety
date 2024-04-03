@@ -17,17 +17,18 @@ const Dealscard: React.FC<DealscardProps> = ({
   btn,
 }) => {
   return (
-    <div className="deals-card">
-      <div className="image-area">
-        <img src={image} alt={title} />
-      </div>
-      <div className="content-area">
-        <div className="top">
-          <p>{title}</p>
-          <h2>{description}</h2>
+    <div className="relative w-full h-96">
+      <img src={image} alt={title} className="object-cover w-full h-full" />
+      <div className="absolute inset-0 bg-black bg-opacity-50" />
+      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between text-white">
+        <div>
+          <p className="text-lg font-bold">{title}</p>
+          <h2 className="text-3xl font-bold">{description}</h2>
         </div>
         <Link href={link}>
-          <button className="button-brown">{btn}</button>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+            {btn}
+          </button>
         </Link>
       </div>
     </div>

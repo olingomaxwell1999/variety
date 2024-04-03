@@ -6,22 +6,22 @@ import { title } from "process";
 export default function Home() {
   const dealsContent = [
     {
-      image: "/banner.jpg",
+      image: "/dealsofthemonth.jpg",
+      link: "/deals",
       title: "Deals of the",
       description: "Month",
-      link: "/deals",
       btn: "View More",
     },
 
     {
-      image: "/banner.jpg",
+      image: "/View-More.jpg",
       title: "New",
       description: "Products",
       link: "/new-products",
       btn: "View More",
     },
     {
-      image: "/banner.jpg",
+      image: "/Projects.jpg",
       title: "New",
       description: "Products",
       link: "/new-products",

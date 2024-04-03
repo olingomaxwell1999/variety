@@ -24,6 +24,14 @@ const Searchbar: React.FC<SearchbarProps> = ({ onSearch, filterOptions }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (searchTerm === null) {
+      console.error("searchTerm is null");
+      return;
+    }
+    if (selectedFilter === null) {
+      console.error("selectedFilter is null");
+      return;
+    }
     onSearch(searchTerm, selectedFilter);
   };
 
@@ -31,15 +39,18 @@ const Searchbar: React.FC<SearchbarProps> = ({ onSearch, filterOptions }) => {
     <div className="w-full flex flex-row items-center">
       <select
         className="px-3 py-2 border rounded-lg mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
-        value={selectedFilter}
+        value={selectedFilter || ""}
         onChange={handleFilterChange}
       >
         <option value="">All</option>
-        {filterOptions.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        {filterOptions.map((option) => {
+          const { value, label } = option;
+          return (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          );
+        })}
       </select>
       <form onSubmit={handleSubmit} className="flex flex-grow">
         <input

@@ -1,7 +1,7 @@
 "use client";
+
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-// import Button from "../Button/Button";
 
 const Homebanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,7 +29,9 @@ const Homebanner = () => {
   }, [currentSlide, slides.length]);
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-80">
+      {" "}
+      {/* Change 'h-screen' to 'h-80' */}
       {slides.map((slide, index) => (
         <div
           key={index}

@@ -2,8 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
-import { FaTwitter } from "react-icons/fa";
-import Logo from "../../../assets/varietylogo.png";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Logo from "../../../assets/varietylo.png";
+import Logo2 from "../../../../../public/Dimer_Logo.png";
+import { AiFillInstagram } from "react-icons/ai";
 
 type FooterProps = {
   children: ReactNode;
@@ -19,8 +21,8 @@ const Footer = () => {
     <div>
       <div className="main-footer">
         <div className="top-footer">
-          <Image src={Logo} alt="logo" width={100} height={100} />
-          <Image src={Logo} alt="logo" width={100} height={100} />
+          <Image src={Logo} alt="logo" width={200} height={80} />
+          <Image src={Logo2} alt="logo" width={100} height={100} />
           <Image src={Logo} alt="logo" width={100} height={100} />
           <Image src={Logo} alt="logo" width={100} height={100} />
         </div>
@@ -28,8 +30,8 @@ const Footer = () => {
         <div className="middle-footer">
           <div className="text">
             <p>
-              he we are always open for coopration and suggestions, contuct us
-              in one of the ways below.
+              Hello we are always open for coopration and suggestions, contuct
+              us in one of the ways below.
             </p>
 
             <h3>Headquater:</h3>
@@ -71,7 +73,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="text">
+          <div className="text upmove">
             <h3>Information</h3>
 
             <ul>
@@ -147,7 +149,7 @@ const Footer = () => {
                 href="https://www.facebook.com/varietyflooringlimited/"
                 target="_@blank"
               >
-                <FaTwitter />
+                <FaFacebook />
               </Link>
             </li>
             <li>
@@ -155,7 +157,7 @@ const Footer = () => {
                 href="https://www.instagram.com/varietyflooringworksltd/"
                 target="_@blank"
               >
-                <FaTwitter />
+                <AiFillInstagram />
               </Link>
             </li>
             <li>
@@ -163,7 +165,7 @@ const Footer = () => {
                 href="https://ke.linkedin.com/company/variety-flooring-works-limited"
                 target="_@blank"
               >
-                <FaTwitter />
+                <FaLinkedin />
               </Link>
             </li>
             <li>

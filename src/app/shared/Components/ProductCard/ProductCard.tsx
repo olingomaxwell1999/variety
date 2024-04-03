@@ -1,39 +1,49 @@
-import Image from "next/image";
 import React from "react";
-import { FaShoppingBag } from "react-icons/fa";
+import { Product } from "../../types/types";
 
 interface ProductCardProps {
-  title: string;
-  image: string;
-  description: string;
-  valuebefore: string;
-  valueafter: string;
+  product: Product;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
-  title,
-  image,
-  description,
-  valuebefore,
-  valueafter,
-}) => (
-  <div className="product-card">
-    <div className="image-area">
-      <img src={image} alt={title} />
-    </div>
-    <div className="textareacontainer p-2 flex">
-      <div className="text-area ">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <h4>
-          {valueafter} <span>{valuebefore}</span>
-        </h4>
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  if (!product.name) {
+    throw new Error("name is required");
+  }
+
+  if (!product.permalink) {
+    throw new Error("permalink is required");
+  }
+
+  return (
+    <div className="product-card">
+      <div className="image-area">
+        {product.image.length > 0 && (
+          <img src={product.image[0].src} alt={product.image[0].alt} />
+        )}
       </div>
-      <div className="icon-area">
-        <FaShoppingBag className="ml-7 text-lg" />
+
+      <div className="textareacontainer p-2 flex">
+        <div className="text-area">
+          <h3>{product.name}</h3>
+          {/* <p>{product.permalink}</p>*/}
+          <h4>
+            {product.valueafter} <span>{product.valuebefore}</span>
+          </h4>
+        </div>
+        <a
+          href={`https://wa.me/?text=Order%20details:%0A%0ATitle:%20${product.name}%0A%0A${product.permalink}%0A%0A${product.valuebefore}%0A${product.valueafter}`}
+          className="icon-area ml-5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"
+            alt="whatsapp"
+          />
+        </a>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default ProductCard;
