@@ -64,7 +64,7 @@ const Page: React.FC = () => {
         console.log("Fetching products for page:", currentPage);
 
         const response = await fetch(
-          `https://variety.co.ke/wp-json/wc/v3/products?category=400&per_page=${productsPerPage}&page=${currentPage}`,
+          `https://variety.co.ke/wp-json/wc/v3/products?category=212&per_page=${productsPerPage}&page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",
