@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
-import Logo from "../../../assets/varietylo.png";
+import Logo from "../../../assets/variety-white-logo.png";
 import Logo2 from "../../../../../public/Dimer_Logo.png";
 import { AiFillInstagram } from "react-icons/ai";
 
@@ -21,7 +21,7 @@ const Footer = () => {
     <div>
       <div className="main-footer">
         <div className="top-footer">
-          <Image src={Logo} alt="logo" width={200} height={80} />
+          <Image src={Logo} alt="logo" width={200} height={100} />
           <Image src={Logo2} alt="logo" width={100} height={100} />
           <Image src={Logo} alt="logo" width={100} height={100} />
           <Image src={Logo} alt="logo" width={100} height={100} />

@@ -11,6 +11,8 @@ interface FilterOption {
   label: string;
 }
 
+const categorySlug = "taps-mixers";
+
 const filterOptions: FilterOption[] = [
   { value: "Tiles", label: "Tiles" },
   { value: "Wall Tiles", label: "Wall Tiles" },
@@ -54,7 +56,7 @@ const Page: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 20;
+  const productsPerPage = 40;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -62,7 +64,7 @@ const Page: React.FC = () => {
         console.log("Fetching products for page:", currentPage);
 
         const response = await fetch(
-          `https://variety.co.ke/wp-json/wc/v3/products?category=64&per_page=${productsPerPage}&page=${currentPage}`,
+          `https://variety.co.ke/wp-json/wc/v3/products?category=38&per_page=${productsPerPage}&page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",
