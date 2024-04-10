@@ -21,7 +21,7 @@ export default function Home() {
       btn: "View More",
     },
     {
-      image: "/Projects.jpg",
+      image: "/PROJECTS.jpg",
       title: "Our",
       description: "Projects",
       link: "/projects",
@@ -43,7 +43,7 @@ export default function Home() {
             link={deal.link}
             btn={deal.btn}
             gridClasses={`${
-              index === 0 ? "col-span-1 lg:col-span-2" : "col-span-1"
+              index === 0 ? "col-span-1 lg:col-span-1" : "col-span-1"
             }`}
           />
         ))}
