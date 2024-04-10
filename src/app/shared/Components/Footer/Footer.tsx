@@ -4,7 +4,9 @@ import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Logo from "../../../assets/variety-white-logo.png";
-import Logo2 from "../../../../../public/Dimer_Logo.png";
+import Logo2 from "../../../../../public/FOOTERAEO.png";
+import Logo3 from "../../../../../public/FOOTERISO.png";
+import Logo4 from "../../../../../public/FOOTERQUALITY.png";
 import { AiFillInstagram } from "react-icons/ai";
 
 type FooterProps = {
@@ -23,8 +25,8 @@ const Footer = () => {
         <div className="top-footer">
           <Image src={Logo} alt="logo" width={200} height={100} />
           <Image src={Logo2} alt="logo" width={100} height={100} />
-          <Image src={Logo} alt="logo" width={100} height={100} />
-          <Image src={Logo} alt="logo" width={100} height={100} />
+          <Image src={Logo3} alt="logo" width={100} height={100} />
+          <Image src={Logo4} alt="logo" width={100} height={100} />
         </div>
         <hr />
         <div className="middle-footer">

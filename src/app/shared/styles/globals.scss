@@ -242,9 +242,9 @@ p{
     grid-template-columns: 1fr 3fr;
     gap: 20px;
 
-    .sidebar{
+    // .sidebar{
 
-    }
+    // }
 
     .productsarea{
         display: flex;
@@ -425,8 +425,7 @@ p{
         }
     }
     .deals-area {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: 1fr !important;
         justify-content: center;
         align-items: center;
     }
@@ -440,7 +439,7 @@ p{
 // Styles for screens larger than 767px and up to 992px
 @media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
     .deals-area {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr !important;
     }
     .main-footer {
         .middle-footer {
@@ -449,3 +448,24 @@ p{
     }
 }
 
+
+@media (max-width: 767px) {
+    .Homebanner {
+        height: 40vh;
+
+        .text-white {
+            font-size: 1.5rem;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .Homebanner .text-4xl {
+        font-size: 2rem;
+    }
+
+    .Homebanner .button {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}

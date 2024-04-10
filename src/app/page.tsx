@@ -6,7 +6,7 @@ import { title } from "process";
 export default function Home() {
   const dealsContent = [
     {
-      image: "/dealsofthemonth.jpg",
+      image: "/DEALS--OF-THE-MONTH.jpg",
       link: "/deals",
       title: "Deals of the",
       description: "Month",
@@ -22,9 +22,9 @@ export default function Home() {
     },
     {
       image: "/Projects.jpg",
-      title: "New",
-      description: "Products",
-      link: "/new-products",
+      title: "Our",
+      description: "Projects",
+      link: "/projects",
       btn: "View More",
     },
   ];
@@ -33,7 +33,7 @@ export default function Home() {
     <div>
       <Homebanner />
 
-      <div className="deals-area">
+      <div className="px-12 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {dealsContent.map((deal, index) => (
           <Dealscard
             key={index}
@@ -42,6 +42,9 @@ export default function Home() {
             description={deal.description}
             link={deal.link}
             btn={deal.btn}
+            className={`${
+              index === 0 ? "col-span-1 lg:col-span-2" : "col-span-1"
+            }`}
           />
         ))}
       </div>

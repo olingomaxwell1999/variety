@@ -8,12 +8,17 @@ const Homebanner = () => {
 
   const slides = [
     {
-      image: "/banner.jpg",
+      image: "/Banners.png",
       title: "Close couple Offers",
       description: "70% off",
     },
     {
-      image: "/banner.jpg",
+      image: "/BannersGranite.png",
+      title: "Close Couple Offers",
+      description: "70% off",
+    },
+    {
+      image: "/BannersTiles.png",
       title: "Close Couple Offers",
       description: "70% off",
     },
@@ -29,7 +34,7 @@ const Homebanner = () => {
   }, [currentSlide, slides.length]);
 
   return (
-    <div className="relative h-80">
+    <div className="relative h-80 Homebanner">
       {" "}
       {/* Change 'h-screen' to 'h-80' */}
       {slides.map((slide, index) => (
@@ -39,7 +44,7 @@ const Homebanner = () => {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
+          <div className="absolute inset-0 bg-black bg-opacity-40" />
           <div className="relative text-white text-center">
             <h2 className="text-xl uppercase font-bold mb-4">{slide.title}</h2>
             <p className="text-4xl font-extrabold mb-4">{slide.description}</p>
