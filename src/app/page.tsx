@@ -42,7 +42,7 @@ export default function Home() {
             description={deal.description}
             link={deal.link}
             btn={deal.btn}
-            className={`${
+            gridClasses={`${
               index === 0 ? "col-span-1 lg:col-span-2" : "col-span-1"
             }`}
           />
