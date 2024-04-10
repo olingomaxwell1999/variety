@@ -2,11 +2,12 @@ import Link from "next/link";
 import React from "react";
 
 interface DealscardProps {
-  title: string;
   image: string;
+  title: string;
   description: string;
   link: string;
   btn: string;
+  gridClasses: string;
 }
 
 const Dealscard: React.FC<DealscardProps> = ({
@@ -15,9 +16,10 @@ const Dealscard: React.FC<DealscardProps> = ({
   description,
   link,
   btn,
+  gridClasses,
 }) => {
   return (
-    <div className="relative w-full h-96">
+    <div className={`relative w-full h-96 ${gridClasses}`}>
       <img src={image} alt={title} className="object-cover w-full h-full" />
       <div className="absolute inset-0 bg-black bg-opacity-50" />
       <div className="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between text-white">
