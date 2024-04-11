@@ -11,6 +11,8 @@ interface FilterOption {
   label: string;
 }
 
+const categorySlug = "taps-mixers";
+
 const filterOptions: FilterOption[] = [
   { value: "Tiles", label: "Tiles" },
   { value: "Wall Tiles", label: "Wall Tiles" },
@@ -54,51 +56,69 @@ const Page: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 20;
+  const productsPerPage = 40;
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await WooCommerce.get("products", {
-          per_page: productsPerPage,
-          page: currentPage,
-        });
+        console.log("Fetching products for page:", currentPage);
 
-        if (response && response.data) {
-          const formattedProducts: Product[] = response.data.map(
-            (product: any) => ({
-              id: product.id,
-              name: product.name,
-              permalink: product.permalink,
-              slug: product.slug,
-              valuebefore: product.price,
-              valueafter: product.sale_price || product.price,
-              image: product.images.map((img: any) => ({
-                id: img.id,
-                src: img.src,
-                alt: img.alt || "",
-              })),
-              category: product.categories
-                .map((category: any) => category.name)
-                .join(", "),
-            })
-          );
+        const response = await fetch(
+          `https://variety.co.ke/wp-json/wc/v3/products?category=146&per_page=${productsPerPage}&page=${currentPage}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              // Add your WooCommerce API credentials here
+              Authorization:
+                "Basic " +
+                Buffer.from(
+                  "ck_bacd2a3d505aad4203727d279eeacb384e199aba:cs_e520d5173291fdf6ef29b423cbb762d6ef081c48"
+                ).toString("base64"),
+            },
+          }
+        );
+
+        console.log("Response:", response); // Log the response for debugging
+
+        if (response.ok) {
+          const data = await response.json();
+          const formattedProducts: Product[] = data.map((product: any) => ({
+            id: product.id,
+            name: product.name,
+            permalink: product.permalink,
+            slug: product.slug,
+            valuebefore: product.price,
+            valueafter: product.sale_price || product.price,
+            image: product.images.map((img: any) => ({
+              id: img.id,
+              src: img.src,
+              alt: img.alt || "",
+            })),
+            category: product.categories
+              .map((category: any) => category.name)
+              .join(", "),
+          }));
+
           setProducts(formattedProducts);
+          console.log("Formatted products:", formattedProducts);
           setFilteredItems(formattedProducts);
-          const totalProducts = response.headers["X-WP-Total"];
+
+          const totalProducts = Number(response.headers.get("X-WP-Total"));
           const calculatedTotalPages = Math.ceil(
             totalProducts / productsPerPage
           );
           setTotalPages(calculatedTotalPages);
         } else {
           console.error(
-            "Failed to fetch products. Response is null or missing data."
+            "Failed to fetch products. Response is not ok.",
+            response.statusText
           );
         }
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
+
     fetchProducts();
   }, [currentPage]);
 
