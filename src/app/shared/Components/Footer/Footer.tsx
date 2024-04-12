@@ -23,10 +23,10 @@ const Footer = () => {
     <div>
       <div className="main-footer">
         <div className="top-footer">
-          <Image src={Logo} alt="logo" width={200} height={100} />
-          <Image src={Logo2} alt="logo" width={100} height={100} />
-          <Image src={Logo3} alt="logo" width={100} height={100} />
-          <Image src={Logo4} alt="logo" width={100} height={100} />
+          <Image src={Logo} alt="logo" width={300} height={300} />
+          <Image src={Logo2} alt="logo" width={200} height={100} />
+          <Image src={Logo3} alt="logo" width={200} height={200} />
+          <Image src={Logo4} alt="logo" width={200} height={200} />
         </div>
         <hr />
         <div className="middle-footer">
@@ -97,37 +97,6 @@ const Footer = () => {
               <li>
                 <Link href="https://twitter.com/varietyflooring?lang=en">
                   Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="text">
-            <h3>Our Policies</h3>
-
-            <ul>
-              <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
-                  Shipping by Brand
-                </Link>
-              </li>
-              <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
-                  Shipping
-                </Link>
-              </li>
-              <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
-                  Terms of Sale
-                </Link>
-              </li>
-              <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
-                  Return Policy
                 </Link>
               </li>
             </ul>

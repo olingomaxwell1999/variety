@@ -49,7 +49,7 @@ const Homebanner = () => {
             <h2 className="text-xl uppercase font-bold mb-4">{slide.title}</h2>
             <p className="text-4xl font-extrabold mb-4">{slide.description}</p>
             <Link href="/offers">
-              <button className="button">Get offer now</button>
+              <button className="button">Get offer now</button>.klklllpb
             </Link>
           </div>
           <img

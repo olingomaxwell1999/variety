@@ -54,7 +54,7 @@ const Page: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 20;
+  const productsPerPage = 80;
 
   useEffect(() => {
     const fetchProducts = async () => {

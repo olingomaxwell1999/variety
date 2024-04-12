@@ -75,7 +75,7 @@ const Navbar: React.FC = () => {
       href: "/taps",
       dropdownLinks: [
         { title: "Taps", href: "/taps" },
-        { title: "Showers", href: "/showers" },
+        { title: "Mixers", href: "/mixers" },
       ],
     },
     {
