@@ -139,7 +139,7 @@ const Page: React.FC = () => {
 
       <div className="productarea">
         <div className="toppart mb-6">
-          <Searchbar onSearch={handleSearch} filterOptions={filterOptions} />
+          {/* <Searchbar onSearch={handleSearch} filterOptions={filterOptions} /> */}
         </div>
 
         <div className="grid grid-cols-4 gap-4">
