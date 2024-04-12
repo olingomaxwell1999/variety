@@ -82,8 +82,9 @@ const Navbar: React.FC = () => {
       title: "Sanitary & BathCo",
       href: "/sanitary",
       dropdownLinks: [
-        { title: "Basins", href: "/basins" },
-        { title: "Toilets", href: "/toilets" },
+        { title: "Wash Basins", href: "/basins" },
+        { title: "Basin Pedestals", href: "/pedestal" },
+        { title: "Toilets", href: "/toilet" },
         { title: "Jaccuzzi", href: "/jaccuzzi" },
       ],
     },
