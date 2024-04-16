@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
       ],
     },
     {
-      title: "Taps & Showers",
+      title: "Taps & Mixers",
       href: "/taps",
       dropdownLinks: [
         { title: "Taps", href: "/taps" },
@@ -98,6 +98,11 @@ const Navbar: React.FC = () => {
       ],
     },
     { title: "Mirrors", href: "/mirors" },
+    {
+      title: "Projects",
+      href: "/projects",
+      dropdownLinks: [{ title: "More Projects", href: "/aboretunm" }],
+    },
     { title: "Contact Us", href: "/contact" },
   ];
 

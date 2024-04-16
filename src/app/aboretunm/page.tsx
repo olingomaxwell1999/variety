@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../shared/Components/ProductCard/ProductCard";
+import Searchbar from "../shared/Components/Searchbar/Searchbar";
 import Sidebar from "../shared/Components/Sidebar/Sidebar";
 import WooCommerce from "../shared/utils/woocommerce";
 import { Product } from "../shared/types/types";
@@ -29,7 +30,7 @@ const Page: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 100;
+  const productsPerPage = 40;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -37,7 +38,7 @@ const Page: React.FC = () => {
         console.log("Fetching products for page:", currentPage);
 
         const response = await fetch(
-          `https://variety.co.ke/wp-json/wc/v3/products?category=145&per_page=${productsPerPage}&page=${currentPage}`,
+          `https://variety.co.ke/wp-json/wc/v3/products?category=140&per_page=${productsPerPage}&page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",

@@ -6,31 +6,7 @@ import Sidebar from "../shared/Components/Sidebar/Sidebar";
 import WooCommerce from "../shared/utils/woocommerce";
 import { Product } from "../shared/types/types";
 
-interface FilterOption {
-  value: string;
-  label: string;
-}
-
 const categorySlug = "taps-mixers";
-
-const filterOptions: FilterOption[] = [
-  { value: "Tiles", label: "Tiles" },
-  { value: "Wall Tiles", label: "Wall Tiles" },
-  { value: "Floor Tiles", label: "Floor Tiles" },
-  { value: "Wood Finish", label: "Wood Finish" },
-  { value: "Sinks", label: "Sinks" },
-  { value: "Taps", label: "Taps" },
-  { value: "Mixers", label: "Mixers" },
-  { value: "Marble", label: "Marble" },
-  { value: "Granite", label: "Granite" },
-  { value: "Showers", label: "Showers" },
-  { value: "Jacuzzi", label: "Jacuzzi" },
-  { value: "Bathroom", label: "Bathroom" },
-  { value: "Sanitary", label: "Sanitary" },
-  { value: "BathCo", label: "BathCo" },
-  { value: "Sanitary", label: "Sanitary" },
-  { value: "Mirrors", label: "Mirrors" },
-];
 
 const Page: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
@@ -56,7 +32,7 @@ const Page: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 40;
+  const productsPerPage = 80;
 
   useEffect(() => {
     const fetchProducts = async () => {

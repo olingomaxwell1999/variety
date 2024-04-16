@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { Product } from "../../types/types";
+import { Product, Category } from "../../types/types";
 
 interface SidebarProps {
   categories: string[];
   setFilteredItems: Dispatch<SetStateAction<Product[]>>;
+  // products: Product[];
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ categories, setFilteredItems }) => {
@@ -23,7 +24,6 @@ const Sidebar: React.FC<SidebarProps> = ({ categories, setFilteredItems }) => {
   return (
     <div className="bg-gray-100 p-4 sm:w-64 sm:block">
       <h3 className="text-lg font-semibold mb-2">Categories</h3>
-
       <ul className="space-y-2">
         <li>
           <button

@@ -6,30 +6,6 @@ import Sidebar from "../shared/Components/Sidebar/Sidebar";
 import WooCommerce from "../shared/utils/woocommerce";
 import { Product } from "../shared/types/types";
 
-interface FilterOption {
-  value: string;
-  label: string;
-}
-
-const filterOptions: FilterOption[] = [
-  { value: "Tiles", label: "Tiles" },
-  { value: "Wall Tiles", label: "Wall Tiles" },
-  { value: "Floor Tiles", label: "Floor Tiles" },
-  { value: "Wood Finish", label: "Wood Finish" },
-  { value: "Sinks", label: "Sinks" },
-  { value: "Taps", label: "Taps" },
-  { value: "Mixers", label: "Mixers" },
-  { value: "Marble", label: "Marble" },
-  { value: "Granite", label: "Granite" },
-  { value: "Showers", label: "Showers" },
-  { value: "Jacuzzi", label: "Jacuzzi" },
-  { value: "Bathroom", label: "Bathroom" },
-  { value: "Sanitary", label: "Sanitary" },
-  { value: "BathCo", label: "BathCo" },
-  { value: "Sanitary", label: "Sanitary" },
-  { value: "Mirrors", label: "Mirrors" },
-];
-
 const Page: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
   const handleSearch: (term: string, filter?: string) => void = (
@@ -39,13 +15,14 @@ const Page: React.FC = () => {
     const currentFilter = filter ?? "";
 
     const filteredItemsByTerm = filteredItems.filter((item) =>
-      item.name.toLowerCase().includes(term.toLowerCase())
+      item?.name?.toLowerCase().includes(term.toLowerCase())
     );
+
     const filteredItemsByCategory = filteredItemsByTerm.filter(
       (item) =>
-        item.name.toLowerCase().includes(currentFilter.toLowerCase()) ||
-        item.permalink.toLowerCase().includes(currentFilter.toLowerCase()) ||
-        item.category.toLowerCase().includes(currentFilter.toLowerCase())
+        item?.name?.toLowerCase().includes(currentFilter.toLowerCase()) ||
+        item?.permalink?.toLowerCase().includes(currentFilter.toLowerCase()) ||
+        item?.category?.toLowerCase().includes(currentFilter.toLowerCase())
     );
 
     setFilteredItems(filteredItemsByCategory);
@@ -80,35 +57,44 @@ const Page: React.FC = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const formattedProducts: Product[] = data.map((product: any) => ({
-            id: product.id,
-            name: product.name,
-            permalink: product.permalink,
-            slug: product.slug,
-            valuebefore: product.price,
-            valueafter: product.sale_price || product.price,
-            image: product.images.map((img: any) => ({
-              id: img.id,
-              src: img.src,
-              alt: img.alt || "",
-            })),
-            category: product.categories
-              .map((category: any) => category.name)
-              .join(", "),
-          }));
+          const formattedProducts: Product[] = data?.map((product: any) => {
+            const images = product?.images?.map((img: any) => ({
+              id: img?.id,
+              src: img?.src,
+              alt: img?.alt || "",
+            }));
 
-          setProducts(formattedProducts);
+            const categoryNames = product?.categories?.map(
+              (category: any) => category?.name
+            );
+
+            return {
+              id: product?.id,
+              name: product?.name,
+              permalink: product?.permalink,
+              slug: product?.slug,
+              valuebefore: product?.price,
+              valueafter: product?.sale_price || product?.price,
+              image: images,
+              category:
+                categoryNames?.length > 0
+                  ? categoryNames.join(", ")
+                  : "Uncategorized",
+            };
+          });
+
+          setProducts(formattedProducts ?? []);
           console.log("Formatted products:", formattedProducts);
-          setFilteredItems(formattedProducts);
+          setFilteredItems(formattedProducts ?? []);
 
           const totalProducts = Number(response.headers.get("X-WP-Total"));
           const calculatedTotalPages = Math.ceil(
-            totalProducts / productsPerPage
+            (totalProducts ?? 0) / productsPerPage
           );
           setTotalPages(calculatedTotalPages);
         } else {
           console.error(
-            "Failed to fetch products. Response is not ok.",
+            "Failed to fetch products. Response is not ok. Error:",
             response.statusText
           );
         }
@@ -121,7 +107,9 @@ const Page: React.FC = () => {
   }, [currentPage]);
 
   const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
   };
 
   return (
@@ -129,7 +117,7 @@ const Page: React.FC = () => {
       <div className="sidebar">
         <Sidebar
           categories={Array.from(
-            new Set(products.map((product) => product.category))
+            new Set(products.map((product) => product?.category))
           )}
           setFilteredItems={setFilteredItems}
         />
@@ -142,7 +130,7 @@ const Page: React.FC = () => {
 
         <div className="grid grid-cols-4 gap-4">
           {filteredItems.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product?.id} product={product} />
           ))}
         </div>
       </div>
@@ -177,5 +165,4 @@ const Page: React.FC = () => {
     </div>
   );
 };
-
 export default Page;

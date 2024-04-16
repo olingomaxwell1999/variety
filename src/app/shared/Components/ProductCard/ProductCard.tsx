@@ -6,14 +6,6 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  if (!product.name) {
-    throw new Error("name is required");
-  }
-
-  if (!product.permalink) {
-    throw new Error("permalink is required");
-  }
-
   return (
     <div className="product-card">
       <div className="image-area">

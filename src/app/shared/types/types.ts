@@ -1,5 +1,11 @@
 // types/types.ts
 
+export interface Category {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Product {
   id: number;
   name: string;
