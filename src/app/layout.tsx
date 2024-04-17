@@ -9,7 +9,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Variety",
-  description: "This is a world class distributer of tiles, taps, showers, marble and granire, mirrors and toilets",
+  description:
+    "This is a world class distributer of tiles, taps, showers, marble and granire, mirrors and toilets",
 };
 
 export default function RootLayout({
@@ -20,10 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TopNav/>
-        <Navbar/>
+        {/* <TopNav/> */}
+        {/* <Navbar/> */}
         {children}
-        <Footer/>
+        {/* <Footer/> */}
       </body>
     </html>
   );

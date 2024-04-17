@@ -1,53 +1,49 @@
-import Image from "next/image";
-import Homebanner from "./shared/Components/Homebanner/Homebanner";
-import Dealscard from "./shared/Components/Dealscard/Dealscard";
-import { title } from "process";
+import Head from "next/head";
 
-export default function Home() {
-  const dealsContent = [
-    {
-      image: "/DEALS--OF-THE-MONTH.jpg",
-      link: "/deals",
-      title: "Deals of the",
-      description: "Month",
-      btn: "View More",
-    },
-
-    {
-      image: "/View-More.jpg",
-      title: "New",
-      description: "Products",
-      link: "/new-products",
-      btn: "View More",
-    },
-    {
-      image: "/PROJECTS.jpg",
-      title: "Our",
-      description: "Projects",
-      link: "/projects",
-      btn: "View More",
-    },
-  ];
-
+export default function ComingSoon() {
   return (
-    <div>
-      <Homebanner />
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
+      <Head>
+        <title>Coming Soon</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      <div className="px-12 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {dealsContent.map((deal, index) => (
-          <Dealscard
-            key={index}
-            image={deal.image}
-            title={deal.title}
-            description={deal.description}
-            link={deal.link}
-            btn={deal.btn}
-            gridClasses={`${
-              index === 0 ? "col-span-1 lg:col-span-1" : "col-span-1"
-            }`}
-          />
-        ))}
-      </div>
+      <main className="flex flex-col items-center justify-center w-full flex-1 px-4 text-center">
+        <h1 className="text-6xl font-bold">Coming Soon</h1>
+
+        <p className="mt-3 text-2xl">
+          Our website is under construction. Stay tuned for the launch!
+        </p>
+
+        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
+          <a
+            href="#"
+            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600 sm:w-full"
+          >
+            <h3 className="text-2xl font-bold">Follow Us &rarr;</h3>
+            <p className="mt-4 text-xl">
+              Stay up-to-date with our latest news and updates.
+            </p>
+          </a>
+
+          <div className="p-6 mt-6 text-left border w-96 rounded-xl sm:w-full">
+            <h3 className="text-2xl font-bold">What We Supply</h3>
+            <p className="mt-4 text-xl">
+              Tiles, Taps, Mixers, Sinks, Marble, Granite, Toilets, Jacuzzis,
+              Cubicles
+            </p>
+            <p className="mt-2 text-xl">
+              Contact us at{" "}
+              <a
+                href="mailto:info@variery.co.ke"
+                className="text-blue-600 hover:text-blue-800"
+              >
+                info@variery.co.ke
+              </a>
+            </p>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
