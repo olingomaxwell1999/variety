@@ -72,10 +72,6 @@ const Navbar: React.FC = () => {
     {
       title: "Granite & Marble",
       href: "/marble",
-      dropdownLinks: [
-        { title: "Granite", href: "/granite" },
-        { title: "Marble", href: "/marble" },
-      ],
     },
     { title: "Mirrors", href: "/mirors" },
     { title: "Projects", href: "/projects" },
