@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../shared/Components/ProductCard/ProductCard";
 import Searchbar from "../shared/Components/Searchbar/Searchbar";
 import Sidebar from "../shared/Components/Sidebar/Sidebar";
-import WooCommerce from "../shared/utils/woocommerce";
 import { Product } from "../shared/types/types";
+
+const categorySlug = "taps-mixers";
 
 const Page: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
@@ -14,7 +15,7 @@ const Page: React.FC = () => {
   ) => {
     const currentFilter = filter ?? "";
 
-    const filteredItemsByTerm = filteredItems.filter((item) =>
+    const filteredItemsByTerm = products.filter((item) =>
       item.name.toLowerCase().includes(term.toLowerCase())
     );
     const filteredItemsByCategory = filteredItemsByTerm.filter(
@@ -30,7 +31,7 @@ const Page: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 40;
+  const productsPerPage = 100;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -38,7 +39,7 @@ const Page: React.FC = () => {
         console.log("Fetching products for page:", currentPage);
 
         const response = await fetch(
-          `https://variety.co.ke/wp-json/wc/v3/products?category=52&per_page=${productsPerPage}&page=${currentPage}`,
+          `https://admin.variety.co.ke/wp-json/wc/v3/products?category=33&per_page=${productsPerPage}&page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -46,7 +47,7 @@ const Page: React.FC = () => {
               Authorization:
                 "Basic " +
                 Buffer.from(
-                  "ck_bacd2a3d505aad4203727d279eeacb384e199aba:cs_e520d5173291fdf6ef29b423cbb762d6ef081c48"
+                  "ck_1d07cbbdd0a67de26ff621b4342ce11d7b666db1:cs_65db64657289eeb22624943a72240815b78cda24"
                 ).toString("base64"),
             },
           }
@@ -108,6 +109,7 @@ const Page: React.FC = () => {
             new Set(products.map((product) => product.category))
           )}
           setFilteredItems={setFilteredItems}
+          handleSearch={handleSearch}
         />
       </div>
 

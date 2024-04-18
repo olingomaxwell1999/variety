@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Logo from "../../../assets/varietylo.png";
 import Image from "next/image";
@@ -42,7 +41,7 @@ const Navbar: React.FC = () => {
         </Link>
         {dropdownLinks && (
           <ul
-            className={`absolute left-0 top-10 bg-white shadow-md rounded-md w-48 p-2 duration-300 ease-in-out group-hover:opacity-100 group-hover:visible opacity-0 invisible`}
+            className={`absolute left-0 top-10 bg-blue-500 text-white shadow-md rounded-md w-48 p-2 duration-300 ease-in-out group-hover:opacity-100 group-hover:visible opacity-0 invisible`}
           >
             {dropdownLinks.map((link, index) => (
               <li key={index}>
@@ -58,36 +57,17 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks: NavLinkProps[] = [
-    {
-      title: "Home",
-      href: "/",
-    },
+    { title: "Home", href: "/" },
     {
       title: "Tiles",
       href: "/tiles",
       dropdownLinks: [
         { title: "Floor Tiles", href: "/floor-tiles" },
-        { title: "Wall Tiles", href: "/tiles" },
+        { title: "Wall Tiles", href: "/walltiles" },
       ],
     },
-    {
-      title: "Taps & Mixers",
-      href: "/taps",
-      dropdownLinks: [
-        { title: "Taps", href: "/taps" },
-        { title: "Mixers", href: "/mixers" },
-      ],
-    },
-    {
-      title: "Sanitary & BathCo",
-      href: "/sanitary",
-      dropdownLinks: [
-        { title: "Wash Basins", href: "/basins" },
-        { title: "Basin Pedestals", href: "/pedestal" },
-        { title: "Toilets", href: "/toilet" },
-        { title: "Jaccuzzi", href: "/jaccuzzi" },
-      ],
-    },
+    { title: "Taps & Mixers", href: "/taps" },
+    { title: "Sanitary & BathCo", href: "/sanitary" },
     { title: "Sinks", href: "/sinks" },
     {
       title: "Granite & Marble",
@@ -98,11 +78,7 @@ const Navbar: React.FC = () => {
       ],
     },
     { title: "Mirrors", href: "/mirors" },
-    {
-      title: "Projects",
-      href: "/projects",
-      dropdownLinks: [{ title: "More Projects", href: "/aboretunm" }],
-    },
+    { title: "Projects", href: "/projects" },
     { title: "Contact Us", href: "/contact" },
   ];
 

@@ -1,24 +1,22 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { Product, Category } from "../../types/types";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { Product } from "../../types/types";
 
 interface SidebarProps {
   categories: string[];
   setFilteredItems: Dispatch<SetStateAction<Product[]>>;
-  // products: Product[];
+  handleSearch: (term: string, filter?: string) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ categories, setFilteredItems }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  categories,
+  setFilteredItems,
+  handleSearch,
+}) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    setFilteredItems((prevItems) => {
-      if (category === "all") {
-        return prevItems;
-      } else {
-        return prevItems.filter((item) => item.category === category);
-      }
-    });
+    handleSearch("", category === "all" ? "" : category);
   };
 
   return (

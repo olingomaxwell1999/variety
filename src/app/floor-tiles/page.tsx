@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../shared/Components/ProductCard/ProductCard";
 import Searchbar from "../shared/Components/Searchbar/Searchbar";
 import Sidebar from "../shared/Components/Sidebar/Sidebar";
-import WooCommerce from "../shared/utils/woocommerce";
 import { Product } from "../shared/types/types";
+
+const categorySlug = "taps-mixers";
 
 const Page: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
@@ -14,15 +15,14 @@ const Page: React.FC = () => {
   ) => {
     const currentFilter = filter ?? "";
 
-    const filteredItemsByTerm = filteredItems.filter((item) =>
-      item?.name?.toLowerCase().includes(term.toLowerCase())
+    const filteredItemsByTerm = products.filter((item) =>
+      item.name.toLowerCase().includes(term.toLowerCase())
     );
-
     const filteredItemsByCategory = filteredItemsByTerm.filter(
       (item) =>
-        item?.name?.toLowerCase().includes(currentFilter.toLowerCase()) ||
-        item?.permalink?.toLowerCase().includes(currentFilter.toLowerCase()) ||
-        item?.category?.toLowerCase().includes(currentFilter.toLowerCase())
+        item.name.toLowerCase().includes(currentFilter.toLowerCase()) ||
+        item.permalink.toLowerCase().includes(currentFilter.toLowerCase()) ||
+        item.category.toLowerCase().includes(currentFilter.toLowerCase())
     );
 
     setFilteredItems(filteredItemsByCategory);
@@ -31,7 +31,7 @@ const Page: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 80;
+  const productsPerPage = 100;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,7 +39,7 @@ const Page: React.FC = () => {
         console.log("Fetching products for page:", currentPage);
 
         const response = await fetch(
-          `https://variety.co.ke/wp-json/wc/v3/products?category=37&per_page=${productsPerPage}&page=${currentPage}`,
+          `https://admin.variety.co.ke/wp-json/wc/v3/products?category=43&per_page=${productsPerPage}&page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const Page: React.FC = () => {
               Authorization:
                 "Basic " +
                 Buffer.from(
-                  "ck_bacd2a3d505aad4203727d279eeacb384e199aba:cs_e520d5173291fdf6ef29b423cbb762d6ef081c48"
+                  "ck_1d07cbbdd0a67de26ff621b4342ce11d7b666db1:cs_65db64657289eeb22624943a72240815b78cda24"
                 ).toString("base64"),
             },
           }
@@ -57,44 +57,35 @@ const Page: React.FC = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const formattedProducts: Product[] = data?.map((product: any) => {
-            const images = product?.images?.map((img: any) => ({
-              id: img?.id,
-              src: img?.src,
-              alt: img?.alt || "",
-            }));
+          const formattedProducts: Product[] = data.map((product: any) => ({
+            id: product.id,
+            name: product.name,
+            permalink: product.permalink,
+            slug: product.slug,
+            valuebefore: product.price,
+            valueafter: product.sale_price || product.price,
+            image: product.images.map((img: any) => ({
+              id: img.id,
+              src: img.src,
+              alt: img.alt || "",
+            })),
+            category: product.categories
+              .map((category: any) => category.name)
+              .join(", "),
+          }));
 
-            const categoryNames = product?.categories?.map(
-              (category: any) => category?.name
-            );
-
-            return {
-              id: product?.id,
-              name: product?.name,
-              permalink: product?.permalink,
-              slug: product?.slug,
-              valuebefore: product?.price,
-              valueafter: product?.sale_price || product?.price,
-              image: images,
-              category:
-                categoryNames?.length > 0
-                  ? categoryNames.join(", ")
-                  : "Uncategorized",
-            };
-          });
-
-          setProducts(formattedProducts ?? []);
+          setProducts(formattedProducts);
           console.log("Formatted products:", formattedProducts);
-          setFilteredItems(formattedProducts ?? []);
+          setFilteredItems(formattedProducts);
 
           const totalProducts = Number(response.headers.get("X-WP-Total"));
           const calculatedTotalPages = Math.ceil(
-            (totalProducts ?? 0) / productsPerPage
+            totalProducts / productsPerPage
           );
           setTotalPages(calculatedTotalPages);
         } else {
           console.error(
-            "Failed to fetch products. Response is not ok. Error:",
+            "Failed to fetch products. Response is not ok.",
             response.statusText
           );
         }
@@ -107,9 +98,7 @@ const Page: React.FC = () => {
   }, [currentPage]);
 
   const handlePageChange = (pageNumber: number) => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-    }
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -117,9 +106,10 @@ const Page: React.FC = () => {
       <div className="sidebar">
         <Sidebar
           categories={Array.from(
-            new Set(products.map((product) => product?.category))
+            new Set(products.map((product) => product.category))
           )}
           setFilteredItems={setFilteredItems}
+          handleSearch={handleSearch}
         />
       </div>
 
@@ -130,7 +120,7 @@ const Page: React.FC = () => {
 
         <div className="grid grid-cols-4 gap-4">
           {filteredItems.map((product) => (
-            <ProductCard key={product?.id} product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
@@ -165,4 +155,5 @@ const Page: React.FC = () => {
     </div>
   );
 };
+
 export default Page;
