@@ -135,7 +135,7 @@ const Page: React.FC = () => {
               : "bg-blue-500 text-white hover:bg-blue-600"
           }`}
         >
-          Previous
+          Prev
         </button>
         <span className="px-4 py-2 bg-gray-200">
           {currentPage} of {totalPages}
