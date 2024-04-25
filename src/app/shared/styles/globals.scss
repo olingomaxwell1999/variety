@@ -392,7 +392,10 @@ p{
             gap: 20px;
             align-items: center;
         }
+        
     }
+
+    
 }
 
 
@@ -450,6 +453,10 @@ p{
 
 
 @media (max-width: 767px) {
+
+    .bottom-footer{
+        justify-content: center;
+    }
     .Homebanner {
         height: 40vh;
 

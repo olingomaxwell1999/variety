@@ -40,9 +40,6 @@ const TopNav = () => {
               <FaLinkedin />
             </Link>
           </li>
-          <li>
-            <Link href="contact/#location">Location & Branches</Link>
-          </li>
         </ul>
       </div>
       <div className="text-area">
