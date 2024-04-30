@@ -5,18 +5,23 @@ interface SidebarProps {
   categories: string[];
   setFilteredItems: Dispatch<SetStateAction<Product[]>>;
   handleSearch: (term: string, filter?: string) => void;
+  handleSidebarToggle: () => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
   categories,
   setFilteredItems,
   handleSearch,
+  handleSidebarToggle,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     handleSearch("", category === "all" ? "" : category);
+    if (category !== "all") {
+      handleSidebarToggle();
+    }
   };
 
   return (

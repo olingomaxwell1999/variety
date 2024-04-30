@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
   const NavLink: React.FC<NavLinkProps> = ({ title, href, dropdownLinks }) => {
     return (
       <li className="relative group">
-        <Link href={href}>
+        <Link href={href} onClick={isMenuOpen ? toggleMenu : undefined}>
           <div className="flex items-center justify-between">
             <p>{title}</p>
             {dropdownLinks && (
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
         </Link>
         {dropdownLinks && (
           <ul
-            className={`absolute left-0 top-10 bg-blue-500 text-white shadow-md rounded-md w-48 p-2 duration-300 ease-in-out group-hover:opacity-100 group-hover:visible opacity-0 invisible`}
+            className={`absolute left-0 top-10 bg-blue-500 text-white shadow-md rounded-md w-48 p-2 duration-300 ease-in-out group-hover:opacity-100 group-hover:visible opacity-0 invisible z-20`}
           >
             {dropdownLinks.map((link, index) => (
               <li key={index}>
@@ -69,10 +69,7 @@ const Navbar: React.FC = () => {
     { title: "Taps & Mixers", href: "/taps" },
     { title: "Sanitary & BathCo", href: "/sanitary" },
     { title: "Sinks", href: "/sinks" },
-    {
-      title: "Granite & Marble",
-      href: "/marble",
-    },
+    { title: "Granite & Marble", href: "/marble" },
     { title: "Mirrors", href: "/mirors" },
     { title: "Projects", href: "/projects" },
     { title: "Contact Us", href: "/contact" },
@@ -84,15 +81,15 @@ const Navbar: React.FC = () => {
         <div className="container px-4 h-full">
           <div className="flex justify-between items-center h-full">
             <Link href="/home">
-              <Image src={Logo} height={60} alt="logo" />
+              <Image src={Logo} height={80} alt="logo" />
             </Link>
             <div className="md:hidden">
               <FaBars onClick={toggleMenu} />
             </div>
             <ul
               className={`md:flex md:gap-x-6 text-black absolute md:static bg-white md:bg-transparent w-full left-0 md:w-auto pl-9 md:pl-0 pb-4 duration-500 ease-in ${
-                isMenuOpen ? "top-20 " : "top-[-490px]"
-              }`}
+                isMenuOpen ? "top-20 z-50" : "top-[-490px]"
+              } ml-6 md:ml-20`}
             >
               {navLinks.map((link, index) => (
                 <NavLink
