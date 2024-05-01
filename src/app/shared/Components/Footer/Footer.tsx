@@ -49,27 +49,22 @@ const Footer = () => {
 
             <ul>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
+                <Link href="/tiles">
                   Tiles
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
-                  Marble
+                <Link href="/marble">
+                  Marble & Granite
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
-                  Granite
-                </Link>
-              </li>
-              <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
+                <Link href="/mirrors">
                   Mirrors
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
+                <Link href="/sanitary">
                   Sanitary Ware
                 </Link>
               </li>
@@ -80,22 +75,22 @@ const Footer = () => {
 
             <ul>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
+                <Link href="/about">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
+                <Link href="/about">
                   Our Mission
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
+                <Link href="/about">
                   Our Branches
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/varietyflooring?lang=en">
+                <Link href="/about">
                   Privacy Policy
                 </Link>
               </li>
