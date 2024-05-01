@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Logo from "../../../assets/varietylo.png";
 import Image from "next/image";
-import {FaBars, FaChevronDown } from "react-icons/fa";
+import { FaBars, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 
 interface NavLinkProps {
@@ -20,28 +20,33 @@ const Navbar: React.FC = () => {
   };
 
   const toggleDropdown = (index: number) => {
-    setActiveDropdown(index === activeDropdown ? null : index);
+    setActiveDropdown(activeDropdown === index ? null : index);
   };
 
   const NavLink: React.FC<NavLinkProps> = ({ title, href, dropdownLinks }) => {
+    const handleClick = () => {
+      toggleDropdown(0); // Toggle dropdown on click
+    };
+
     return (
-      <li className="relative group">
-        <Link href={href} onClick={isMenuOpen ? toggleMenu : undefined}>
-          <div className="flex items-center justify-between">
+      <li className="relative">
+        <div className="flex items-center justify-between" onClick={handleClick}>
+          <Link href={href} onClick={isMenuOpen ? toggleMenu : undefined}>
             <p>{title}</p>
-            {dropdownLinks && (
-              <FaChevronDown
-                className={`ml-2 transition-transform duration-300 ${
-                  activeDropdown === 0 ? "rotate-180" : ""
-                }`}
-                onClick={() => toggleDropdown(0)}
-              />
-            )}
-          </div>
-        </Link>
+          </Link>
+          {dropdownLinks && (
+            <FaChevronDown
+              className={`ml-2 transition-transform duration-300 ${
+                activeDropdown === 0 ? "rotate-180" : ""
+              }`}
+            />
+          )}
+        </div>
         {dropdownLinks && (
           <ul
-            className={`absolute left-0 top-10 bg-blue-500 text-white shadow-md rounded-md w-48 p-2 duration-300 ease-in-out group-hover:opacity-100 group-hover:visible opacity-0 invisible z-20`}
+            className={`absolute left-0 top-10 bg-blue-500 text-white shadow-md rounded-md w-48 p-2 duration-300 ease-in-out ${
+              activeDropdown === 0 ? "opacity-100 visible" : "opacity-0 invisible"
+            } z-20`}
           >
             {dropdownLinks.map((link, index) => (
               <li key={index}>
