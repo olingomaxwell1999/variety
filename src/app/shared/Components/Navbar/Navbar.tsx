@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Logo from "../../../assets/varietylo.png";
 import Image from "next/image";
-import { FaShoppingBag, FaBars, FaChevronDown } from "react-icons/fa";
+import {FaBars, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 
 interface NavLinkProps {
@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="w-full h-20 sticky top-0 main-nav z-10 bg-white">
+      <div className="navbar w-full h-20 sticky top-0 main-nav z-10 bg-white">
         <div className="container px-4 h-full">
           <div className="flex justify-between items-center h-full">
             <Link href="/home">
