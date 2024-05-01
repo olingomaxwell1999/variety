@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <h3>{product.name}</h3>
           {/* <p>{product.permalink}</p>*/}
           <h4>
-            {product.valueafter} <span>{product.valuebefore}</span>
+            Ksh {product.valueafter} <span>{product.valuebefore}</span>
           </h4>
         </div>
         <a

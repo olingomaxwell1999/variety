@@ -17,7 +17,7 @@ export default function Home() {
       image: "/View-More.jpg",
       title: "New",
       description: "Products",
-      link: "/new-products",
+      link: "/new",
       btn: "View More",
     },
     {
