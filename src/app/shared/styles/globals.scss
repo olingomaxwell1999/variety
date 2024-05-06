@@ -72,7 +72,11 @@ p{
 }
 
 .navbar{
-    z-index: 1000;
+    z-index: 20000 !important;
+}
+
+.toggle-btn{
+    z-index: 500 !important;
 }
 
 //Deals Area section

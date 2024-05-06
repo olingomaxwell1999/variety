@@ -128,7 +128,7 @@ const Page: React.FC = () => {
 
       {/* Toggle button */}
       <button
-        className="fixed toggle-btn top-10 left-4 z-50 p-2 bg-gray-200 rounded-md shadow-md focus:outline-none"
+        className="fixed toggle-btn top-10 left-4 p-2 bg-gray-200 rounded-md shadow-md focus:outline-none"
         onClick={toggleSidebar}
       >
         {isSidebarOpen ? "Close Sidebar" : "Open Sidebar"}
