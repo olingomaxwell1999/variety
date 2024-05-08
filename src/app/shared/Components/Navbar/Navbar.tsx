@@ -8,13 +8,13 @@ import { MdClose } from "react-icons/md";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleDropdown = (id) => {
+  const toggleDropdown = (id: number) => {
     setDropdownOpen(dropdownOpen === id ? null : id);
   };
 
