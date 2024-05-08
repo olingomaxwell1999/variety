@@ -32,30 +32,49 @@ const Footer = () => {
         <div className="middle-footer">
           <div className="text">
             <p>
-              Hello we are always open for coopration and suggestions, contuct
+              Hello we are always open for cooperation and suggestions, conduct
               us in one of the ways below.
             </p>
 
-            <h3>Headquater:</h3>
+            <h3>Headquarter:</h3>
 
             <p>Opposite JKIA Airport</p>
 
             <p>Heading towards Nairobi, Nairobi, Kenya</p>
 
-            <h3>call/whatsapp:0723670300</h3>
+            <h3>call/whatsapp:0798071535</h3>
+
+            <h3>Mombasa Branch:</h3>
+
+            <p>Leisure Stage, Bombolulu,</p>
+
+            <p>Heading Towards Malindi</p>
+
+            <h3>call/whatsapp:0742839572</h3>
+
           </div>
           <div className="text">
             <h3>Product categories</h3>
 
             <ul>
               <li>
-                <Link href="/tiles">
-                  Tiles
+                <Link href="/marble">
+                  Marble
                 </Link>
               </li>
               <li>
-                <Link href="/marble">
-                  Marble & Granite
+                <Link href="/granite">
+                  Granite
+                </Link>
+              </li>
+              <li>
+                <Link href="/quartz">
+                  Quartz
+                </Link>
+              </li>
+              <li>
+                <Link href="/sintered-stone">
+                  Sintered Stone
                 </Link>
               </li>
               <li>
@@ -63,14 +82,9 @@ const Footer = () => {
                   Mirrors
                 </Link>
               </li>
-              <li>
-                <Link href="/sanitary">
-                  Sanitary Ware
-                </Link>
-              </li>
             </ul>
           </div>
-          <div className="text upmove">
+          <div className="text">
             <h3>Information</h3>
 
             <ul>

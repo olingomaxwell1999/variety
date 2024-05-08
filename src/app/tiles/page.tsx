@@ -1,13 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../shared/Components/ProductCard/ProductCard";
-import Sidebar from "../shared/Components/Sidebar/Sidebar";
 import { Product } from "../shared/types/types";
-import Searchbar from "../shared/Components/Searchbar/Searchbar";
 
 const Page: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("");
 
@@ -19,10 +16,6 @@ const Page: React.FC = () => {
     setSelectedFilter(filter || "");
   };
 
-  const handleSidebarToggle = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -32,7 +25,7 @@ const Page: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `https://admin.variety.co.ke/wp-json/wc/v3/products?category=32\&per_page=${productsPerPage}&page=${currentPage}`,
+          `https://admin.variety.co.ke/wp-json/wc/v3/products?category=32&per_page=${productsPerPage}&page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -109,10 +102,6 @@ const Page: React.FC = () => {
     setCurrentPage(pageNumber);
   };
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   const filterOptions = [
     { value: "", label: "All" },
     ...Array.from(new Set(products.map((product) => product.category))).map(
@@ -124,47 +113,29 @@ const Page: React.FC = () => {
   ];
 
   return (
-    <div className="tilepage flex">
+    <div className="tilepage flex flex-col">
 
-      {/* Toggle button */}
-      <button
-        className="fixed toggle-btn top-10 left-4 z-50 p-2 bg-gray-200 rounded-md shadow-md focus:outline-none"
-        onClick={toggleSidebar}
-      >
-        {isSidebarOpen ? "Close Sidebar" : "Open Sidebar"}
-      </button>
-
-      {/* Sidebar */}
-      <div
-        className={`sidebar fixed left-0 h-screen pt-20 transition-transform duration-300 transform ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <Sidebar
-          categories={Array.from(
-            new Set(products.map((product) => product.category))
-          )}
-          setFilteredItems={setFilteredItems}
-          handleSearch={handleSearch}
-          handleSidebarToggle={handleSidebarToggle}
-        />
+      {/* Category buttons */}
+      <div className="mb-4 flex flex-wrap gap-2">
+        {filterOptions.map((option) => (
+          <button
+            key={option.value}
+            onClick={() => handleSearch("", option.value)}
+            className={`px-4 py-2 rounded-md ${
+              option.value === selectedFilter
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            {option.label}
+          </button>
+        ))}
       </div>
 
-      {/* Main content area */}
-      <div
-        className={`productarea flex-grow transition-all duration-300 ${
-          isSidebarOpen ? "ml-64" : ""
-        }`}
-      >
-        {/* Search bar */}
-        <div className="searchbar mt-5 mb-5">
-          <Searchbar onSearch={handleSearch} filterOptions={filterOptions} />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {filteredItems.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {filteredItems.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
 
       {/* Pagination */}

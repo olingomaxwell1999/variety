@@ -23,7 +23,7 @@ $breakpoint-extra-large: 1200px;
 
 body {
     font-family: 'FuturaLT', sans-serif !important;
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 p{
@@ -332,7 +332,7 @@ p{
 // Footer Styles
 .main-footer {
 
-    background-color: var(--main-brown);
+    background-color: var(--main-blue);
     padding: var(--main-padding);
     color: #fff;
     display: flex;
@@ -384,7 +384,7 @@ p{
     justify-content: space-between;
     // justify-content: center;
     align-items: center;
-    background-color: var(--main-blue);
+    background-color: var(--main-brown);
     color: #fff;
 
     .footer-bottom-icon{

@@ -25,7 +25,7 @@ const Page: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          `https://admin.variety.co.ke/wp-json/wc/v3/products?category=33&per_page=${productsPerPage}&page=${currentPage}`,
+          `https://admin.variety.co.ke/wp-json/wc/v3/products?category=44&per_page=${productsPerPage}&page=${currentPage}`,
           {
             headers: {
               "Content-Type": "application/json",
