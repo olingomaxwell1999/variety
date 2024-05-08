@@ -55,6 +55,9 @@ const TopNav = () => {
           <li>
             <Link href="/contact">Contact Us</Link>
           </li>
+          <li>
+            <Link href="/enquiry">Enquire</Link>
+          </li>
         </ul>
       </div>
     </div>
