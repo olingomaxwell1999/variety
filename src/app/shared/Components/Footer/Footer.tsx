@@ -78,8 +78,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/mirrors">
-                  Mirrors
+                <Link href="/tiles">
+                  Tiles
                 </Link>
               </li>
             </ul>
@@ -106,6 +106,11 @@ const Footer = () => {
               <li>
                 <Link href="/about">
                   Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/about">
+                  Terms & Conditions
                 </Link>
               </li>
             </ul>
@@ -153,8 +158,8 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="footer-bottom-sides">
-          <p>Copyrights {currentYear} &copy; Variety. All rights reserved.</p>
+        <div className="footer-bottom-sides px-8">
+          <p>Copyrights {currentYear} @Variety. All rights reserved.</p>
         </div>
       </div>
     </div>

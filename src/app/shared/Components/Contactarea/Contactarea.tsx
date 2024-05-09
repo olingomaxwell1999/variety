@@ -62,7 +62,7 @@ const Contactarea = () => {
             <div className="text-area-contact">
               <h3>
                 Call/WhatsApp:
-                <br /> 0723670300
+                <br /> 0798071535
               </h3>
             </div>
           </div>
@@ -87,7 +87,7 @@ const Contactarea = () => {
             <div className="text-area-contact">
               <h3>
                 Call/WhatsApp:
-                <br /> 0724470195
+                <br /> 0742839572
               </h3>
             </div>
           </div>

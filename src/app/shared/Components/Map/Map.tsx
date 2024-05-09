@@ -15,7 +15,7 @@ const Map = () => {
 
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14320.068394483143!2d39.68301843587254!3d-4.034008103183008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1840128665064fa1%3A0x6aa338c96ca1ac42!2sVariety%20Flooring%20Works%20Ltd!5e0!3m2!1sen!2ske!4v1712086802663!5m2!1sen!2ske"
-        width="600"
+        width="100%"
         height="450"
         allowFullScreen
         loading="lazy"

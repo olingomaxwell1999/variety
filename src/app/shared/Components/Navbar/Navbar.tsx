@@ -1,7 +1,7 @@
 "use client";
 import Logo from "../../../assets/varietylo.png";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
@@ -9,6 +9,7 @@ import { MdClose } from "react-icons/md";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<number | null>(null);
+  const [isSticky, setIsSticky] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -23,53 +24,53 @@ const Navbar = () => {
     setDropdownOpen(null);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsSticky(scrollTop > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-white navbar">
+    <nav className={`bg-white w-full transition-all duration-300 ${isSticky ? "fixed top-0 left-0 z-50 shadow-md" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/">
-              <Image src={Logo} height={90} alt="Variety Logo" />
+              <Image src={Logo} height={100} alt="Variety Logo" className="h-9" />
             </Link>
           </div>
           <div className="hidden md:block">
             <ul className="flex items-center space-x-6">
               <li>
-                <Link
-                  href="/granite"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/granite" className="text-black hover:text-gray-900 font-medium">
                   Granite
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/marble"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/marble" className="text-black hover:text-gray-900 font-medium">
                   Marble
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/quartz"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/quartz" className="text-black hover:text-gray-900 font-medium">
                   Quartz
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/sintered-stone"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/sintered-stone" className="text-black hover:text-gray-900 font-medium">
                   Sintered Stone
                 </Link>
               </li>
-              
+
               <li className="relative">
                 <button
                   type="button"
@@ -150,57 +151,39 @@ const Navbar = () => {
                     >
                       Tile Essentials
                     </Link>
-                    {/* Add more dropdown links as needed */}
                   </div>
                 </div>
               </li>
 
               <li>
-                <Link
-                  href="/taps"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/taps" className="text-black hover:text-gray-900 font-medium">
                   Taps & Showers
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/bathroom-accessories"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/bathroom-accessories" className="text-black hover:text-gray-900 font-medium">
                   Bathroom Accessories
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/sanitary"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/sanitary" className="text-black hover:text-gray-900 font-medium">
                   Sanitary
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/mirors"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/mirors" className="text-black hover:text-gray-900 font-medium">
                   Mirrors & Cabinets
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/other-products"
-                  className="text-black hover:text-gray-900 font-medium"
-                >
+                <Link href="/other-products" className="text-black hover:text-gray-900 font-medium">
                   Other Products
                 </Link>
               </li>
-              
-              {/* Add more dropdown menus and regular links as needed */}
             </ul>
           </div>
           <div className="-mr-2 flex md:hidden">
