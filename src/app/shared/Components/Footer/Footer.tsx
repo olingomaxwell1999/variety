@@ -5,7 +5,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Logo from "../../../assets/variety-white-logo.png";
 import Logo2 from "../../../../../public/FOOTERAEO.png";
-import Logo3 from "../../../../../public/FOOTERISO.png";
+import Logo3 from "../../../../../public/iso.jpg";
 import Logo4 from "../../../../../public/FOOTERQUALITY.png";
 import { AiFillInstagram } from "react-icons/ai";
 
