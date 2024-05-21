@@ -56,6 +56,9 @@ const Homebanner = () => {
               <Link href="/deals">
                 <button className="button">Get offer now</button>
               </Link>
+              <Link href="/deals">
+                <button className="button ml-3 enquire">Enquire</button>
+              </Link>
             </div>
           </div>
         </div>

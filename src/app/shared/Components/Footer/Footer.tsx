@@ -51,36 +51,25 @@ const Footer = () => {
             <p>Heading Towards Malindi</p>
 
             <h3>call/whatsapp:0742839572</h3>
-
           </div>
           <div className="text">
             <h3>Product categories</h3>
 
             <ul>
               <li>
-                <Link href="/marble">
-                  Marble
-                </Link>
+                <Link href="/marble">Marble</Link>
               </li>
               <li>
-                <Link href="/granite">
-                  Granite
-                </Link>
+                <Link href="/granite">Granite</Link>
               </li>
               <li>
-                <Link href="/quartz">
-                  Quartz
-                </Link>
+                <Link href="/quartz">Quartz</Link>
               </li>
               <li>
-                <Link href="/sintered-stone">
-                  Sintered Stone
-                </Link>
+                <Link href="/sintered-stone">Sintered Stone</Link>
               </li>
               <li>
-                <Link href="/tiles">
-                  Tiles
-                </Link>
+                <Link href="/tiles">Tiles</Link>
               </li>
             </ul>
           </div>
@@ -89,29 +78,16 @@ const Footer = () => {
 
             <ul>
               <li>
-                <Link href="/about">
-                  About Us
-                </Link>
+                <Link href="/about">About Us</Link>
               </li>
               <li>
-                <Link href="/about">
-                  Our Mission
-                </Link>
+                <Link href="/about">Our Mission</Link>
               </li>
               <li>
-                <Link href="/about">
-                  Our Branches
-                </Link>
+                <Link href="/about">Our Branches</Link>
               </li>
               <li>
-                <Link href="/about">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/about">
-                  Terms & Conditions
-                </Link>
+                <Link href="/about">Privacy Policy</Link>
               </li>
             </ul>
           </div>
@@ -154,7 +130,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <p>©Variety</p>
+              <p>@Variety</p>
             </li>
           </ul>
         </div>
