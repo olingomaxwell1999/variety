@@ -21,7 +21,7 @@ const Page: React.FC = () => {
             distributing only the highest quality marble and granite. Over the
             years, we have developed and nurtured strong relationships with
             suppliers around the world, which enables us to hand-select and
-            purchase only the best natural stones from the world's foremost
+            purchase only the best natural stones from the world&apos;s foremost
             quarries and companies. As the need for change in customer demand we
             entered in the market of Tiles and Sanitary ware in 2007. Most
             recently in the year 2019 we entered the market of engineered stone
@@ -29,7 +29,7 @@ const Page: React.FC = () => {
             innovation that sets us apart from other competitors. We have two
             major stores in Kenya located in Nairobi and Mombasa. We also
             distribute our products and offer services in most cities in Kenya.
-            Some of the products we have are:{" "}
+            Some of the products we have are:
             <strong>
               Tiles, Sanitary Ware, Granite, Marble, Quartz, Sintered Stone,
               White Cement
