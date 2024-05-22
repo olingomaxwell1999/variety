@@ -1,21 +1,21 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 
 const Page: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [message, setMessage] = useState("");
   const [attachments, setAttachments] = useState<File[]>([]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here, you can implement the logic to send the enquiry data to your backend or an email service.
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Phone Number:', phoneNumber);
-    console.log('Message:', message);
-    console.log('Attachments:', attachments);
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Phone Number:", phoneNumber);
+    console.log("Message:", message);
+    console.log("Attachments:", attachments);
   };
 
   const handleAttachmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
