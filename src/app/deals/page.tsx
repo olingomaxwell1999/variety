@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ProductCard from "../shared/Components/ProductCard/ProductCard";
+// import ProductCard from "../shared/Components/ProductCard/ProductCard";
 import { Product } from "../shared/types/types";
+import Dealsproductcard from "../shared/Components/Dealsproductcard/Dealsproductcard";
 
 const Page: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
@@ -114,7 +115,6 @@ const Page: React.FC = () => {
 
   return (
     <div className="tilepage flex flex-col">
-
       {/* Category buttons */}
       <div className="mb-4 flex flex-wrap gap-2">
         {filterOptions.map((option) => (
@@ -134,7 +134,7 @@ const Page: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {filteredItems.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <Dealsproductcard key={product.id} product={product} />
         ))}
       </div>
 
