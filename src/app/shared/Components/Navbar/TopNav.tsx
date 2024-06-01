@@ -1,35 +1,69 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 
+interface Product {
+  id: number;
+  name: string;
+  // Add other properties as needed
+}
+
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          `https://admin.variety.co.ke/wp-json/wc/v3/products?search=${searchTerm}&search_by=name`
+        );
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    if (searchTerm.trim() !== "") {
+      fetchProducts();
+    } else {
+      setProducts([]);
+    }
+  }, [searchTerm]);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Perform search logic here with the searchTerm
-    console.log("Search term:", searchTerm);
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex items-center">
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="px-2 py-1 border border-gray-300 rounded"
-      />
-      <button
-        type="submit"
-        className="px-2 py-1 bg-blue-500 text-white rounded ml-2"
-      >
-        Search
-      </button>
-    </form>
+    <div>
+      <form onSubmit={handleSearch} className="flex items-center">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="px-2 py-1 border border-gray-300 rounded text-black"
+        />
+        <button
+          type="submit"
+          className="px-2 py-1 bg-blue-500 text-white rounded ml-2"
+        >
+          Search
+        </button>
+      </form>
+      {products.length > 0 && (
+        <ul>
+          {products.map((product) => (
+            <li key={product.id}>{product.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 
