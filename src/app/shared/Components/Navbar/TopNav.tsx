@@ -5,6 +5,34 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Perform search logic here with the searchTerm
+    console.log("Search term:", searchTerm);
+  };
+
+  return (
+    <form onSubmit={handleSearch} className="flex items-center">
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="px-2 py-1 border border-gray-300 rounded"
+      />
+      <button
+        type="submit"
+        className="px-2 py-1 bg-blue-500 text-white rounded ml-2"
+      >
+        Search
+      </button>
+    </form>
+  );
+};
+
 const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -55,6 +83,9 @@ const TopNav = () => {
       </div>
       <div className={`text-area ${isOpen ? "block" : "hidden"} md:block`}>
         <ul className="flex flex-col md:flex-row">
+          <li>
+            <SearchBar />
+          </li>
           <li>
             <Link href="/">Home</Link>
           </li>
