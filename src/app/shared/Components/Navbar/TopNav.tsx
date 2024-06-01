@@ -40,14 +40,14 @@ const TopNav = () => {
               <AiFillInstagram />
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href="https://ke.linkedin.com/company/variety-flooring-works-limited"
               target="_blank"
             >
               <FaLinkedin />
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="md:hidden ml-7">
           <GiHamburgerMenu onClick={toggleMenu} />

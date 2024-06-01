@@ -36,7 +36,7 @@ const Contactarea = () => {
         <h2 className="mb-4">Contact Information</h2>
 
         <p className="mb-4">
-          Hi we are always open for coopration & Suggestions. Contact
+          Hi we are always open for cooperation & Suggestions. Contact
           <br /> us via any means below.
         </p>
 
@@ -47,7 +47,7 @@ const Contactarea = () => {
               <span>Address</span>
             </div>
             <div className="text-area-contact">
-              <h3>HeadQuater</h3>
+              <h3>HeadQuarter</h3>
               <p>Opposite JKIA</p>
               <p>Heading Towards Nairobi</p>
               <p>Nairobi, Kenya</p>

@@ -22,13 +22,13 @@ const Footer = () => {
   return (
     <div>
       <div className="main-footer">
-        <div className="top-footer">
+        {/* <div className="top-footer">
           <Image src={Logo} alt="logo" width={300} height={300} />
           <Image src={Logo2} alt="logo" width={200} height={100} />
           <Image src={Logo3} alt="logo" width={200} height={200} />
           <Image src={Logo4} alt="logo" width={200} height={200} />
-        </div>
-        <hr />
+        </div> */}
+        {/* <hr /> */}
         <div className="middle-footer">
           <div className="text">
             <p>
@@ -121,14 +121,14 @@ const Footer = () => {
                 <AiFillInstagram />
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href="https://ke.linkedin.com/company/variety-flooring-works-limited"
                 target="_@blank"
               >
                 <FaLinkedin />
               </Link>
-            </li>
+            </li> */}
             <li>
               <p>@Variety</p>
             </li>

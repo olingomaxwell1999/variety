@@ -1,21 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ProductCard from "../shared/Components/ProductCard/ProductCard";
 import { Product } from "../shared/types/types";
 
 const Page: React.FC = () => {
-  const [filteredItems, setFilteredItems] = useState<Product[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("");
-
-  const handleSearch: (term: string, filter?: string) => void = (
-    term,
-    filter
-  ) => {
-    setSearchTerm(term);
-    setSelectedFilter(filter || "");
-  };
-
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -47,11 +34,6 @@ const Page: React.FC = () => {
             slug: product.slug,
             valuebefore: product.price,
             valueafter: product.sale_price || product.price,
-            image: product.images.map((img: any) => ({
-              id: img.id,
-              src: img.src,
-              alt: img.alt || "",
-            })),
             category: product.categories
               .map((category: any) => category.name)
               .join(", "),
@@ -59,7 +41,6 @@ const Page: React.FC = () => {
 
           setProducts(formattedProducts);
           console.log("Formatted products:", formattedProducts);
-          setFilteredItems(formattedProducts);
 
           const totalProducts = Number(response.headers.get("X-WP-Total"));
           const calculatedTotalPages = Math.ceil(
@@ -80,63 +61,20 @@ const Page: React.FC = () => {
     fetchProducts();
   }, [currentPage]);
 
-  useEffect(() => {
-    const filterProducts = () => {
-      const filteredItemsByTerm = products.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      const filteredItemsByCategory = filteredItemsByTerm.filter(
-        (item) =>
-          item.name.toLowerCase().includes(selectedFilter.toLowerCase()) ||
-          item.permalink.toLowerCase().includes(selectedFilter.toLowerCase()) ||
-          item.category.toLowerCase().includes(selectedFilter.toLowerCase())
-      );
-
-      setFilteredItems(filteredItemsByCategory);
-    };
-
-    filterProducts();
-  }, [products, searchTerm, selectedFilter]);
-
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
-  const filterOptions = [
-    { value: "", label: "All" },
-    ...Array.from(new Set(products.map((product) => product.category))).map(
-      (category) => ({
-        value: category,
-        label: category,
-      })
-    ),
-  ];
-
   return (
     <div className="tilepage flex flex-col">
-
-      {/* Category buttons */}
-      <div className="mb-4 flex flex-wrap gap-2">
-        {filterOptions.map((option) => (
-          <button
-            key={option.value}
-            onClick={() => handleSearch("", option.value)}
-            className={`px-4 py-2 rounded-md ${
-              option.value === selectedFilter
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`}
-          >
-            {option.label}
-          </button>
+      {/* Product list */}
+      <ul>
+        {products.map((product) => (
+          <li key={product.id} className="py-2">
+            {product.name}
+          </li>
         ))}
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {filteredItems.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      </ul>
 
       {/* Pagination */}
       <div className="flex justify-center items-center mt-8">

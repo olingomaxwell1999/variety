@@ -355,63 +355,42 @@ const Page: React.FC = () => {
                       </p>
                     </dt>
                     <dd className="mt-2 ml-16 text-base text-gray-500">
-                      Our experienced team of professionals can install all
-                      types of flooring, including tiles, hardwood, laminate,
-                      and more.
+                      Our experienced team of professionals can install any
+                      types of granite, marble, Quartz or sintered stone.
                     </dd>
                   </div>
-
                   <div className="relative">
                     <dt>
                       <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                        <BsBuildings className="h-6 w-6" />
+                        <svg
+                          className="h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                          />
+                        </svg>
                       </div>
                       <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
-                        Construction Services
+                        Questions and Contract Information
                       </p>
                     </dt>
                     <dd className="mt-2 ml-16 text-base text-gray-500">
-                      We offer a range of construction services, including
-                      renovation, remodeling, and new construction projects.
+                      If you need to: access, correct, amend or delete any
+                      personal information we have about you, register a
+                      complaint, or simply want more information contact us.
                     </dd>
                   </div>
                 </dl>
               </div>
             </div>
-          </div>
-
-          <div className="mt-10">
-            <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-              <div className="relative">
-                <dt>
-                  <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                    <svg
-                      className="h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                      />
-                    </svg>
-                  </div>
-                  <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
-                    Questions and Contract Information
-                  </p>
-                </dt>
-                <dd className="mt-2 ml-16 text-base text-gray-500">
-                  If you need to: access, correct, amend or delete any personal
-                  information we have about you, register a complaint, or simply
-                  want more information contact us.
-                </dd>
-              </div>
-            </dl>
           </div>
         </div>
       </div>

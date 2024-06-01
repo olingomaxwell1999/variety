@@ -47,7 +47,7 @@ const Page: React.FC = () => {
             permalink: product.permalink,
             slug: product.slug,
             valuebefore: product.price,
-            valueafter: product.sale_price || product.price,
+            valueafter: product.sale_price ? product.sale_price : product.price, // Check if sale_price is present, if not, assign price to valueafter
             image: product.images.map((img: any) => ({
               id: img.id,
               src: img.src,
