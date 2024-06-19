@@ -4,6 +4,7 @@ import "./shared/styles/globals.scss";
 import Navbar from "./shared/Components/Navbar/Navbar";
 import Footer from "./shared/Components/Footer/Footer";
 import TopNav from "./shared/Components/Navbar/TopNav";
+import WhatsAppButton from "./shared/Components/WhatsAppButton/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <TopNav />
         <Navbar />
         {children}
+        <WhatsAppButton phoneNumber="+254722601865" />
         <Footer />
       </body>
     </html>
