@@ -6,19 +6,14 @@ const Homebanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
-      image: "/Banners.png",
-      title: "Close couple Offers",
-      description: "70% off",
-    },
-    {
       image: "/BannersGranite.png",
-      title: "Close Couple Offers",
-      description: "70% off",
+      title: "Welcome To Variety Flooring Works Ltd",
+      description: "Home To Quality",
     },
     {
       image: "/BannersTiles.png",
-      title: "Close Couple Offers",
-      description: "70% off",
+      title: "Welcome To Variety Flooring Works Ltd",
+      description: "Home To Quality",
     },
     // Add more slides as needed
   ];
@@ -54,7 +49,7 @@ const Homebanner = () => {
                 {slide.description}
               </p>
               <Link href="/deals">
-                <button className="button">Get offer now</button>
+                <button className="button">Special Deals</button>
               </Link>
               <Link href="/enquiry">
                 <button className="button ml-3 enquire">Enquire</button>
