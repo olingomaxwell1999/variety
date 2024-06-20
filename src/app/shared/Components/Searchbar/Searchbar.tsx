@@ -40,7 +40,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ filterOptions }) => {
   return (
     <div className="w-full flex flex-row items-center">
       <select
-        className="px-3 py-2 color-black border rounded-lg mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        className="px-3 py-2 text-black border rounded-lg mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
         value={selectedFilter || ""}
         onChange={handleFilterChange}
       >
@@ -57,7 +57,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ filterOptions }) => {
       <form onSubmit={handleSubmit} className="flex flex-grow">
         <input
           type="text"
-          className="px-3 py-2 border color-black rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+          className="px-3 py-2 border text-black rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleSearchChange}
