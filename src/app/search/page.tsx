@@ -1,6 +1,6 @@
 import SearchResults from "../shared/Components/SearchResults/SearchResults";
 
-const SearchPage = () => {
+const page = () => {
   return (
     <div>
       <SearchResults />
@@ -8,4 +8,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+export default page;
