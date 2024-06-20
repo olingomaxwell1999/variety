@@ -17,7 +17,7 @@ const Page: React.FC = () => {
     emailjs
       .sendForm(
         "service_xj952nh",
-        "template_fufslur",
+        "template_n8fk4ze",
         form.current!,
         "zawJOYsZrm9H5-IQ8"
       )

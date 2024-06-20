@@ -14,7 +14,7 @@ const Contactarea = () => {
     emailjs
       .sendForm(
         "service_xj952nh",
-        "template_fufslur",
+        "template_n8fk4ze",
         e.currentTarget,
         "zawJOYsZrm9H5-IQ8"
       )
