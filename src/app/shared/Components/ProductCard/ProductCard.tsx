@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {product.valueafter} <span>{product.valuebefore}</span>
           </h4>
         </div>
-        <a
+        {/* <a
           href={`https://wa.me/?text=Order%20details:%0A%0ATitle:%20${product.name}%0A%0A${product.permalink}%0A%0A${product.valuebefore}%0A${product.valueafter}`}
           className="icon-area ml-5"
           target="_blank"
@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"
             alt="whatsapp"
           />
-        </a>
+        </a> */}
       </div>
     </div>
   );
