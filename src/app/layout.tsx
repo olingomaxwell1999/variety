@@ -25,7 +25,7 @@ export default function RootLayout({
         <TopNav />
         <Navbar />
         {children}
-        <WhatsAppButton phoneNumber="+254798071535" />
+        <WhatsAppButton phoneNumber="+254742839572" />
         <Footer />
       </body>
     </html>
