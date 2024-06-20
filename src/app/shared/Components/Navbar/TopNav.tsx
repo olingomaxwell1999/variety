@@ -1,71 +1,10 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-
-interface Product {
-  id: number;
-  name: string;
-  // Add other properties as needed
-}
-
-const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(
-          `https://admin.variety.co.ke/wp-json/wc/v3/products?search=${searchTerm}&search_by=name`
-        );
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    if (searchTerm.trim() !== "") {
-      fetchProducts();
-    } else {
-      setProducts([]);
-    }
-  }, [searchTerm]);
-
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
-  return (
-    <div>
-      <form onSubmit={handleSearch} className="flex items-center">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="px-2 py-1 border border-gray-300 rounded text-black"
-        />
-        <button
-          type="submit"
-          className="px-2 py-1 bg-blue-500 text-white rounded ml-2"
-        >
-          Search
-        </button>
-      </form>
-      {products.length > 0 && (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>{product.name}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+import Searchbar from "../Searchbar/Searchbar";
 
 const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +12,12 @@ const TopNav = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const filterOptions = [
+    { value: "category", label: "Category" },
+    { value: "price", label: "Price" },
+    { value: "rating", label: "Rating" },
+  ];
 
   return (
     <div className="top-nav flex flex-col md:flex-row">
@@ -118,7 +63,7 @@ const TopNav = () => {
       <div className={`text-area ${isOpen ? "block" : "hidden"} md:block`}>
         <ul className="flex flex-col md:flex-row">
           <li>
-            <SearchBar />
+            <Searchbar filterOptions={filterOptions} />
           </li>
           <li>
             <Link href="/">Home</Link>

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
@@ -7,6 +8,11 @@ const Homebanner = () => {
   const slides = [
     {
       image: "/BannersGranite.png",
+      title: "Welcome To Variety Flooring Works Ltd",
+      description: "Home To Quality",
+    },
+    {
+      image: "/bannertwo.jpg",
       title: "Welcome To Variety Flooring Works Ltd",
       description: "Home To Quality",
     },
@@ -34,7 +40,8 @@ const Homebanner = () => {
             index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
+          <Image
+            width={100} height={80}
             src={slide.image}
             alt={`Slide ${index + 1}`}
             className="h-full w-full object-cover"

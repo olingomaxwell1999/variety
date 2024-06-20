@@ -6,7 +6,7 @@ import { title } from "process";
 export default function Home() {
   const dealsContent = [
     {
-      image: "/DEALS--OF-THE-MONTH.jpg",
+      image: "/DEALS-OF-THE-MONTH.jpg",
       link: "/deals",
       title: "Deals of the",
       description: "Month",
@@ -14,7 +14,7 @@ export default function Home() {
     },
 
     {
-      image: "/View-More.jpg",
+      image: "/NEW-PRODUCTS.jpg",
       title: "New",
       description: "Products",
       link: "/new",

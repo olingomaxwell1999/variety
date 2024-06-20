@@ -22,7 +22,7 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({ phoneNumber }) => {
     <>
       <button
         onClick={handleOpenModal}
-        className="fixed bottom-4 left-4 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center"
+        className="fixed bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

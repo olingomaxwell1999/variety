@@ -1,3 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 interface FilterOption {
@@ -6,11 +8,11 @@ interface FilterOption {
 }
 
 type SearchbarProps = {
-  onSearch: (term: string, filter?: string) => void;
   filterOptions: FilterOption[];
 };
 
-const Searchbar: React.FC<SearchbarProps> = ({ onSearch, filterOptions }) => {
+const Searchbar: React.FC<SearchbarProps> = ({ filterOptions }) => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
@@ -24,21 +26,21 @@ const Searchbar: React.FC<SearchbarProps> = ({ onSearch, filterOptions }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (searchTerm === null) {
-      console.error("searchTerm is null");
+    if (searchTerm === null || selectedFilter === null) {
+      console.error("searchTerm or selectedFilter is null");
       return;
     }
-    if (selectedFilter === null) {
-      console.error("selectedFilter is null");
-      return;
-    }
-    onSearch(searchTerm, selectedFilter);
+    router.push(
+      `/search?term=${encodeURIComponent(
+        searchTerm
+      )}&filter=${encodeURIComponent(selectedFilter)}`
+    );
   };
 
   return (
     <div className="w-full flex flex-row items-center">
       <select
-        className="px-3 py-2 border rounded-lg mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        className="px-3 py-2 color-black border rounded-lg mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
         value={selectedFilter || ""}
         onChange={handleFilterChange}
       >
@@ -55,7 +57,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ onSearch, filterOptions }) => {
       <form onSubmit={handleSubmit} className="flex flex-grow">
         <input
           type="text"
-          className="px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+          className="px-3 py-2 border color-black rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleSearchChange}
