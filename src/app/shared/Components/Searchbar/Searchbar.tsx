@@ -64,7 +64,7 @@ const Searchbar: React.FC<SearchbarProps> = ({ filterOptions }) => {
         />
         <button
           type="submit"
-          className="ml-2 button hover:bg-blue-700 text-white rounded-lg"
+          className="ml-2 button bg-blue-700 hover:bg-blue-700 text-white rounded-lg"
         >
           Search
         </button>
