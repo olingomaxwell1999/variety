@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Searchbar from "../Searchbar/Searchbar";
+// import Searchbar from "../Searchbar/Searchbar";
 
 const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,11 +13,11 @@ const TopNav = () => {
     setIsOpen(!isOpen);
   };
 
-  const filterOptions = [
-    { value: "category", label: "Category" },
-    { value: "price", label: "Price" },
-    { value: "rating", label: "Rating" },
-  ];
+  // const filterOptions = [
+  //   { value: "category", label: "Category" },
+  //   { value: "price", label: "Price" },
+  //   { value: "rating", label: "Rating" },
+  // ];
 
   return (
     <div className="top-nav flex flex-col md:flex-row">
@@ -63,7 +63,7 @@ const TopNav = () => {
       <div className={`text-area ${isOpen ? "block" : "hidden"} md:block`}>
         <ul className="flex flex-col md:flex-row">
           <li>
-            <Searchbar filterOptions={filterOptions} />
+{/*             <Searchbar filterOptions={filterOptions} /> */}
           </li>
           <li>
             <Link href="/">Home</Link>
