@@ -20,7 +20,7 @@ const Contactarea = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          alert(result.text);
         },
         (error) => {
           console.log(error.text);
@@ -131,7 +131,7 @@ const Contactarea = () => {
         <div className="contact-form">
           <form className="contact-form" onSubmit={sendEmail}>
             <div className="input-carrier">
-              <label htmlFor="first name">Name</label>
+              <label htmlFor="firstName">Name</label>
               <input type="text" name="firstName" required />
             </div>
 
