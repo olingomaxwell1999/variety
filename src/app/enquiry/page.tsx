@@ -27,7 +27,7 @@ const Page: React.FC = () => {
         form.current!,
         "zawJOYsZrm9H5-IQ8"
       );
-      console.log(result.text);
+      alert(result.text);
       // Reset form fields after successful submission
       setName("");
       setEmail("");
