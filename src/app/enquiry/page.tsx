@@ -10,31 +10,33 @@ const Page: React.FC = () => {
   const [message, setMessage] = useState("");
   const [attachments, setAttachments] = useState<File[]>([]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Send the form data using Email.js
-    emailjs
-      .sendForm(
+    const formData = new FormData(form.current!);
+
+    // Append each attachment to the FormData
+    attachments.forEach((file, index) => {
+      formData.append(`attachment${index + 1}`, file);
+    });
+
+    try {
+      const result = await emailjs.sendForm(
         "service_xj952nh",
         "template_n8fk4ze",
         form.current!,
         "zawJOYsZrm9H5-IQ8"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          // Reset form fields after successful submission
-          setName("");
-          setEmail("");
-          setPhoneNumber("");
-          setMessage("");
-          setAttachments([]);
-        },
-        (error) => {
-          console.log(error.text);
-        }
       );
+      console.log(result.text);
+      // Reset form fields after successful submission
+      setName("");
+      setEmail("");
+      setPhoneNumber("");
+      setMessage("");
+      setAttachments([]);
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
   };
 
   const handleAttachmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,6 +95,7 @@ const Page: React.FC = () => {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="w-full border border-gray-300 rounded-md p-2"
+              required
             />
           </div>
           <div className="mb-4">
