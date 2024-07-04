@@ -49,7 +49,7 @@ const Page: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4">Enquiry Form</h2>
         <form ref={form} onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block font-bold mb-2 text-red-500">
+            <label htmlFor="firstName" className="block font-bold mb-2 text-red-500">
               Name *
             </label>
             <input
