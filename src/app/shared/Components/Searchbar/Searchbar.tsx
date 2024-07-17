@@ -1,75 +1,37 @@
+// components/SearchBar.tsx
 "use client";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
 
-interface FilterOption {
-  value: string;
-  label: string;
-}
-
-type SearchbarProps = {
-  filterOptions: FilterOption[];
-};
-
-const Searchbar: React.FC<SearchbarProps> = ({ filterOptions }) => {
+const Searchbar: React.FC = () => {
+  const [query, setQuery] = useState("");
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedFilter(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (searchTerm === null || selectedFilter === null) {
-      console.error("searchTerm or selectedFilter is null");
-      return;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) {
+      router.push(`/search`);
     }
-    router.push(
-      `/search?term=${encodeURIComponent(
-        searchTerm
-      )}&filter=${encodeURIComponent(selectedFilter)}`
-    );
   };
 
   return (
-    <div className="w-full flex flex-row items-center">
-      <select
-        className="px-3 py-2 text-black border rounded-lg mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
-        value={selectedFilter || ""}
-        onChange={handleFilterChange}
-      >
-        <option value="">All</option>
-        {filterOptions.map((option) => {
-          const { value, label } = option;
-          return (
-            <option key={value} value={value}>
-              {label}
-            </option>
-          );
-        })}
-      </select>
-      <form onSubmit={handleSubmit} className="flex flex-grow">
+    <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">
+      <div className="flex items-center border-b-2 border-teal-500 py-2">
         <input
+          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
-          className="px-3 py-2 border text-black rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearchChange}
+          placeholder="Enter product code"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
         <button
+          className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
           type="submit"
-          className="ml-2 button bg-blue-700 text-white rounded-lg"
         >
           Search
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

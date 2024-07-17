@@ -1,14 +1,15 @@
-import { Suspense } from "react";
+// src/app/search/page.tsx
 import SearchResults from "../shared/Components/SearchResults/SearchResults";
 
-const page = () => {
+export default function page({
+  searchParams,
+}: {
+  searchParams: { code: string };
+}) {
   return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <SearchResults />
-      </Suspense>
+    <div className="container mx-auto px-4">
+      <h1 className="text-2xl font-bold my-4">Search Results</h1>
+      <SearchResults code={searchParams.code} />
     </div>
   );
-};
-
-export default page;
+}

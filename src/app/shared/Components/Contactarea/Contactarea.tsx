@@ -3,32 +3,9 @@ import React, { useState } from "react";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { GoClock } from "react-icons/go";
-import emailjs from "@emailjs/browser";
 
 const Contactarea = () => {
   const [result, setResult] = useState(false);
-
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_xj952nh",
-        "template_n8fk4ze",
-        e.currentTarget,
-        "zawJOYsZrm9H5-IQ8"
-      )
-      .then(
-        (result) => {
-          alert(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-
-    e.currentTarget.reset();
-  };
 
   return (
     <div className="contact-area">
@@ -62,7 +39,7 @@ const Contactarea = () => {
             <div className="text-area-contact">
               <h3>
                 Call/WhatsApp:
-                <br /> 0798071535
+                <br /> +254798071435
               </h3>
             </div>
           </div>
@@ -87,7 +64,7 @@ const Contactarea = () => {
             <div className="text-area-contact">
               <h3>
                 Call/WhatsApp:
-                <br /> 0742839572
+                <br /> +254742839572
               </h3>
             </div>
           </div>
@@ -129,21 +106,35 @@ const Contactarea = () => {
         </p>
 
         <div className="contact-form">
-          <form className="contact-form" onSubmit={sendEmail}>
+          <form className="contact-form">
             <div className="input-carrier">
               <label htmlFor="firstName">Name</label>
-              <input type="text" name="firstName" required />
+              <input
+                placeholder="Enter your name"
+                type="text"
+                name="name"
+                required
+              />
             </div>
 
             <div className="input-carrier">
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" required />
+              <input
+                placeholder="Enter your email"
+                type="email"
+                name="email"
+                required
+              />
             </div>
 
             <div className="input-carrier">
               <label htmlFor="message">Message</label>
 
-              <textarea className="message" name="message"></textarea>
+              <textarea
+                placeholder="Enter your message"
+                className="message"
+                name="message"
+              ></textarea>
             </div>
 
             <div className="btn-area">

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Searchbar from "../Searchbar/Searchbar";
 // import Searchbar from "../Searchbar/Searchbar";
 
 const TopNav = () => {
@@ -63,7 +64,8 @@ const TopNav = () => {
       <div className={`text-area ${isOpen ? "block" : "hidden"} md:block`}>
         <ul className="flex flex-col md:flex-row">
           <li>
-{/*             <Searchbar filterOptions={filterOptions} /> */}
+            {/*             <Searchbar filterOptions={filterOptions} /> */}
+            {/* <Searchbar /> */}
           </li>
           <li>
             <Link href="/">Home</Link>

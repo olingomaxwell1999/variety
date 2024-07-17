@@ -51,10 +51,14 @@ const Page: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4">Enquiry Form</h2>
         <form ref={form} onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="firstName" className="block font-bold mb-2 text-red-500">
+            <label
+              htmlFor="firstName"
+              className="block font-bold mb-2 text-red-500"
+            >
               Name *
             </label>
             <input
+              placeholder="Enter your name"
               type="text"
               id="name"
               name="name"
@@ -72,6 +76,7 @@ const Page: React.FC = () => {
               Email *
             </label>
             <input
+              placeholder="Enter your email"
               type="email"
               id="email"
               name="email"
@@ -89,6 +94,7 @@ const Page: React.FC = () => {
               Phone Number *
             </label>
             <input
+              placeholder="Enter your phone number"
               type="tel"
               id="phoneNumber"
               name="phoneNumber"
@@ -108,6 +114,7 @@ const Page: React.FC = () => {
             <textarea
               id="message"
               name="message"
+              placeholder="Enter your message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               className="w-full border border-gray-300 rounded-md p-2"

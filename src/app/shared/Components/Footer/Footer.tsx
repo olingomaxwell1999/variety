@@ -42,7 +42,7 @@ const Footer = () => {
 
             <p>Heading towards Nairobi, Nairobi, Kenya</p>
 
-            <h3>call/whatsapp:0798071535</h3>
+            <h3>call/whatsapp:+254798071435</h3>
 
             <h3>Mombasa Branch:</h3>
 
@@ -50,7 +50,7 @@ const Footer = () => {
 
             <p>Heading Towards Malindi</p>
 
-            <h3>call/whatsapp:0742839572</h3>
+            <h3>call/whatsapp:+254742839572</h3>
           </div>
           <div className="text">
             <h3>Product categories</h3>

@@ -1,12 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../shared/Components/ProductCard/ProductCard";
-import { Product } from "../shared/types/types";
+import { Product, Category } from "../shared/types/types";
 
 const Page: React.FC = () => {
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const productsPerPage = 100;
 
   const handleSearch: (term: string, filter?: string) => void = (
     term,
@@ -16,12 +21,41 @@ const Page: React.FC = () => {
     setSelectedFilter(filter || "");
   };
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 100;
-
   useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          "https://admin.variety.co.ke/wp-json/wc/v3/products/categories?parent=66",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Basic " +
+                Buffer.from(
+                  "ck_1d07cbbdd0a67de26ff621b4342ce11d7b666db1:cs_65db64657289eeb22624943a72240815b78cda24"
+                ).toString("base64"),
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const formattedCategories: Category[] = data.map((category: any) => ({
+            id: category.id,
+            name: category.name,
+            slug: category.slug,
+          }));
+          setCategories(formattedCategories);
+        } else {
+          console.error(
+            "Failed to fetch categories. Response is not ok.",
+            response.statusText
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
     const fetchProducts = async () => {
       try {
         const response = await fetch(
@@ -29,7 +63,6 @@ const Page: React.FC = () => {
           {
             headers: {
               "Content-Type": "application/json",
-              // Add your WooCommerce API credentials here
               Authorization:
                 "Basic " +
                 Buffer.from(
@@ -77,6 +110,7 @@ const Page: React.FC = () => {
       }
     };
 
+    fetchCategories();
     fetchProducts();
   }, [currentPage]);
 
@@ -104,17 +138,14 @@ const Page: React.FC = () => {
 
   const filterOptions = [
     { value: "", label: "All" },
-    ...Array.from(new Set(products.map((product) => product.category))).map(
-      (category) => ({
-        value: category,
-        label: category,
-      })
-    ),
+    ...categories.map((category) => ({
+      value: category.slug,
+      label: category.name,
+    })),
   ];
 
   return (
     <div className="tilepage flex flex-col">
-
       {/* Category buttons */}
       <div className="mb-4 flex flex-wrap gap-2">
         {filterOptions.map((option) => (

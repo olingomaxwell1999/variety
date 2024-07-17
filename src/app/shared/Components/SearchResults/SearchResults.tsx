@@ -1,50 +1,51 @@
+// src/app/search/SearchResults.tsx
 "use client";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
-interface Product {
-  id: number;
-  name: string;
-  // Add other properties as needed
+import { useEffect, useState } from "react";
+import ProductCard from "../ProductCard/ProductCard";
+import { Product } from "../../types/types";
+
+interface SearchResultsProps {
+  code: string;
 }
 
-const SearchResults = () => {
-  const searchParams = useSearchParams();
+const SearchResults: React.FC<SearchResultsProps> = ({ code }) => {
   const [products, setProducts] = useState<Product[]>([]);
-
-  const searchTerm = searchParams.get("term") || "";
-  const selectedFilter = searchParams.get("filter") || "";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(
-          `https://admin.variety.co.ke/wp-json/wc/v3/products?search=${searchTerm}&search_by=name&filter=${selectedFilter}`
-        );
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    if (searchTerm && selectedFilter) {
+    if (code) {
       fetchProducts();
     }
-  }, [searchTerm, selectedFilter]);
+  }, [code]);
+
+  const fetchProducts = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://admin.variety.co.ke/wp-json/wc/v3/products?category=${code}&consumer_key=ck_1d07cbbdd0a67de26ff621b4342ce11d7b666db1&consumer_secret=cs_65db64657289eeb22624943a72240815b78cda24`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
+      }
+      const data = await response.json();
+      setProducts(data);
+    } catch (err) {
+      setError("An error occurred while fetching products.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
-    <div>
-      <h1>Search Results</h1>
-      {products.length > 0 ? (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>{product.name}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No products found.</p>
-      )}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
 };
