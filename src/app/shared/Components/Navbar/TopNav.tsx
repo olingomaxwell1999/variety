@@ -5,20 +5,21 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Searchbar from "../Searchbar/Searchbar";
+import { Product } from "../../types/types";
 // import Searchbar from "../Searchbar/Searchbar";
 
 const TopNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+
+  const handleSearch = (products: Product[]) => {
+    setSearchResults(products);
+  };
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  // const filterOptions = [
-  //   { value: "category", label: "Category" },
-  //   { value: "price", label: "Price" },
-  //   { value: "rating", label: "Rating" },
-  // ];
 
   return (
     <div className="top-nav flex flex-col md:flex-row">
@@ -48,14 +49,6 @@ const TopNav = () => {
               <AiFillInstagram />
             </Link>
           </li>
-          {/* <li>
-            <Link
-              href="https://ke.linkedin.com/company/variety-flooring-works-limited"
-              target="_blank"
-            >
-              <FaLinkedin />
-            </Link>
-          </li> */}
         </ul>
         <div className="md:hidden ml-7">
           <GiHamburgerMenu onClick={toggleMenu} />
@@ -64,8 +57,11 @@ const TopNav = () => {
       <div className={`text-area ${isOpen ? "block" : "hidden"} md:block`}>
         <ul className="flex flex-col md:flex-row">
           <li>
-            {/*             <Searchbar filterOptions={filterOptions} /> */}
-            {/* <Searchbar /> */}
+            <Link href="/search">
+              <button className="px-2 rounded py-2 bg-red-600">
+                Search Page
+              </button>
+            </Link>
           </li>
           <li>
             <Link href="/">Home</Link>
