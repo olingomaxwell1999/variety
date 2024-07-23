@@ -1,12 +1,12 @@
 import React from "react";
-import Banner from "../shared/Components/Banner/Banner";
 import ContactArea from "../shared/Components/Contactarea/Contactarea";
 import MapComponent from "../shared/Components/Map/Map";
+import Banner from "../shared/Components/Banner/Banner";
 
 const Page = () => {
   const bannerContent = [
     {
-      backgroundImage: "/banner.jpg",
+      backgroundImage: "/Contact-Us-Page.jpg",
       text: "Contact Us",
     },
   ];
