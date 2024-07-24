@@ -51,14 +51,17 @@ const Page: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4">Enquiry Form</h2>
         <form ref={form} onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block font-bold mb-2 text-red-500">
+            <label
+              htmlFor="from_name"
+              className="block font-bold mb-2 text-red-500"
+            >
               Name *
             </label>
             <input
               placeholder="Enter your name"
               type="text"
               id="name"
-              name="name"
+              name="from_name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full border border-gray-300 rounded-md p-2"

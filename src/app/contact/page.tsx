@@ -137,11 +137,11 @@ const Contactarea = () => {
         <div className="contact-form">
           <form ref={form} onSubmit={handleSubmit} className="contact-form">
             <div className="input-carrier">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="from_name">Name</label>
               <input
                 placeholder="Enter your name"
                 type="text"
-                name="name"
+                name="from_name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
