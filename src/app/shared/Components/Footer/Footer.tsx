@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="middle-footer">
           <div className="text">
             <p>
-              Hello we are always open for cooperation and suggestions, conduct
+              Hello we are always open for cooperation and suggestions, contact
               us in one of the ways below.
             </p>
 
